@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+
+/////////////////////////
+// Controllers
+/////////////////////////
 const membersController   = require('../server/controllers/members');
+
 
 /////////////////////////
 // Stripe Routes

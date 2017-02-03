@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+
+/////////////////////////
 // Controllers
+/////////////////////////
 var apiController       = require('../server/controllers/api');
 var productsController  = require('../server/controllers/products');
 var showsController     = require('../server/controllers/shows');
@@ -52,3 +55,5 @@ router.get('/brochures/:id',       apiController.getBrochure);
 router.put('/brochures/:id',       apiController.updateBrochure);
 router.get('/envkey/:keyname',     apiController.getEnvKey);
 
+
+module.exports = router;

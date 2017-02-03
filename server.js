@@ -63,69 +63,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ROUTES
 ////////////////////////////////////////////////////////////
 
-const stripe = require('./routes/stripe');
-app.use('/stripe', stripe);
+const stripeRouter = require('./routes/stripe');
+app.use('/stripe', stripeRouter);
 
-// /////////////////////////
-// // Stripe
-// /////////////////////////
-// app.get('/stripe/login',              membersController.stripeLogin);
-// app.get('/stripe/callback',           membersController.stripeAuthCallback);
-// app.post('/stripe/webhook/account/',  membersController.stripeAccountWebhook);
-// app.post('/stripe/webhook/connect/',  membersController.stripeConnectWebhook);
+const apiRouter = require('./routes/api');
+app.use('/api', apiRouter);
 
-
-/////////////////////////
-// api routes
-/////////////////////////
-app.get('/api/configs/:config_id',                      apiController.getConfigById);
-app.post('/api/configs',                                apiController.createOrUpdateConfig);
-app.get('/api/products/:product_id',                    productsController.getProductById);
-app.post('/api/products',                               productsController.createOrUpdateProduct);
-app.get('/api/productskus/:productsku_id',              productsController.getProductSkuById);
-app.post('/api/productskus',                            productsController.createOrUpdateProductSku);
-app.get('/api/shows/:show_id',                          showsController.getShowById);
-app.post('/api/shows',                                  showsController.createOrUpdateShow);
-app.get('/api/showdates/:showdate_id',                  showsController.getShowDateById);
-app.post('/api/showdates',                              showsController.createOrUpdateShowDate);
-app.get('/api/showtickets/:showticket_id',              showsController.getShowTicketById);
-app.post('/api/showtickets',                            showsController.createOrUpdateShowTicket);
-
-
-// store routes
-app.get('/api/store/shows/catalog',                     storeController.getShowCatalog);
-app.get('/api/store/products/catalog',                  storeController.getProductCatalog);
-app.post('/api/store/cartrecord',                       storeController.saveStoreCart);
-
-
-/////////////////////////
-// member routes
-/////////////////////////
-
-// member configs
-app.get('/api/members/:member_id/configs',              membersController.getMemberConfigs);
-app.get('/api/members/:member_id/events',               membersController.getMemberEvents);
-// member products
-app.get('/api/members/:member_id/products',             membersController.getMemberProductListing);
-// member shows
-app.get('/api/members/:member_id/shows',                membersController.getMemberShowListing);
-
-
-// orders
-app.post('/store/checkout',                             storeController.stripeVerifyCallback);
-
-
-// Api brochures and env keys
-app.get('/api/brochures',           apiController.getBrochures);
-app.post('/api/brochures',          apiController.addBrochure);
-app.get('/api/brochures/:id',       apiController.getBrochure);
-app.put('/api/brochures/:id',       apiController.updateBrochure);
-app.get('/api/envkey/:keyname',     apiController.getEnvKey);
-
+const storeRouter = require('./routes/store');
+app.use('/store', storeRouter);
 
 // Proxy Resource - resolves by correcting https and http for resources
 app.get('/proxyresource/:resourceurl',
   resourceController.proxyResource);
+
 
 
 ///////////////////////////////////////////////////////////

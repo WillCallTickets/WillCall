@@ -83,7 +83,6 @@ exports.getMemberConfigs = function(req, res){
 
 // application account events
 exports.stripeAccountWebhook = function(req, res){
-  // console.log('ACCOUNT WEBHOOK')
   events.recordWebhook(req.body)
   .then(function(data){
     response.send(200);
@@ -92,7 +91,6 @@ exports.stripeAccountWebhook = function(req, res){
 
 // member events
 exports.stripeConnectWebhook = function(req, res){
-  // console.log('CONNECT WEBHOOK', req.body)
   events.recordWebhook(req.body)
   .then(function(data){
     res.sendStatus(200);
@@ -161,19 +159,15 @@ function ensureMembersTableEntry(body){
   
   return members.getMember_ByStripeUserId(_stripeid)
   .then(function (_member) {
-    // console.log('ENSURE - first return', _member)
     if (_member) {
-      // console.log('ENSURE - WE HAVE MEMBER')
       // we have an existing member - update stripe token info
       return members.updateMemberStripe_ByStripeUserId(
         _stripeid, _publishKey, _accessToken, _refreshToken);
     } else {
-      // console.log('ENSURE - NO MEMBER')
       // create a new member - the update with a stripe info call
       return members.createMemberStripe(
         _stripeid, _publishKey, _accessToken, _refreshToken)
       .then(function(__member){
-        // console.log('ENSURE - JUST CREATED MEMBER')
         return exports.updateMemberStripeDetails(__member);
       });
     }

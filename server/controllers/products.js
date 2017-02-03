@@ -30,7 +30,6 @@ exports.createOrUpdateProduct = function(req,res){
 //////////////////////////////////////////////////////////////////////
 
 exports.getProductSkuById = function(req, res){
-  // console.log('PASSING THRU', req.params)
   productskus.getProductSkuById(req.params.productsku_id)
   .then(function(data){
     res.json(data);

@@ -36,7 +36,6 @@ angular.module('MyApp').factory('Show',
         .format('YYYY/MM/DD hh:mm a');
     },
     dateRange: function(){
-      // console.log('DATERANGE', this.firstDate())
       if(this.firstDate() === this.lastDate()){
         return this.firstDate();
       }
@@ -50,8 +49,6 @@ angular.module('MyApp').factory('Show',
     // only issue a warning if it will cause a show not to display tickets
     ticketWarningIfEmpty: function(){
       return this.showtickets().filter(function (itm) {
-        // console.log('AVAIL',itm.available())
-        // console.log('ACT',itm.active)
         return itm.active && itm.available() > 0 && itm.price > 0;
       });
     }
@@ -81,11 +78,9 @@ angular.module('MyApp').factory('Show',
     })
     .catch(function(err){
       //convert err to array and return
-      // console.log('I CAUGHT it', err)
       errors.push(err.data);
       deferred.reject(errors);
     })
-    
     
     return deferred.promise;
   };
@@ -99,7 +94,6 @@ angular.module('MyApp').factory('Show',
       if (matches.length > 1) {
         matches.sort((a, b) => a.dateofshow - b.dateofshow);
       }
-      // console.log('MATCHES', matches)
       return new Show(show, matches);
     });
   };

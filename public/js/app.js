@@ -38,7 +38,6 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
       },
       'cart@store': {
         templateUrl: 'partials/store/cart.html',
-        
       }
     }
   })

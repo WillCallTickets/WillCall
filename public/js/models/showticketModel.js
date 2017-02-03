@@ -57,11 +57,6 @@ angular.module('MyApp')
     
     var deferred = $q.defer();
     
-    // console.log('FORM', form)
-    // console.log('INPUT', input)
-    // console.log('CURRENT DATE', currentShowDate)
-    // console.log('CURRENT TICKET', currentShowTicket)
-    
     var errors = [];
   
     input.showdate_id = (currentShowTicket) ?
@@ -77,7 +72,6 @@ angular.module('MyApp')
     })
     .catch(function(err){
       //convert err to array and return
-      // console.log('I CAUGHT it', err)
       errors.push(err.data);
       deferred.reject(errors);
     })
@@ -88,7 +82,6 @@ angular.module('MyApp')
   
   // Convert to ShowTicket Objects
   ShowTicket.buildShowTicketCollection = function(ticketRows) {
-    // console.log('building...', dateRows)
     return ticketRows.map(function (ticket) {
       return new ShowTicket(ticket);
     });

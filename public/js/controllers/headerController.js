@@ -12,10 +12,8 @@ function HeaderCtrl($scope, $location, $window, $auth, ContextService) {
     
     $scope.view = {};
     $scope.view.ContextService = ContextService;
-    // ctrl.memberLogout = memberLogout; // not sure why this does not work
+    // TODO ctrl.memberLogout = memberLogout; // not sure why this does not work
     
-    // console.log('HEADER CONTROLLER LOADED')
-
     function isActive(viewLocation) {
         return viewLocation === $location.path();
     }

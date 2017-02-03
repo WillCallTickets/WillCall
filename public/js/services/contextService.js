@@ -6,9 +6,7 @@ angular.module('MyApp')
              Config, Show, ShowDate, ShowTicket, Product, ProductSku){
 
       var _self = this;
-      
-      // console.log('CONTEXT SERVICE LOADED')
-      
+            
       this.STRIPE_PUBLISH_KEY = function(){
         return $http.get('/api/envkey/STRIPE_PUBLISH');
       }
@@ -18,17 +16,16 @@ angular.module('MyApp')
       ////////////////////////////////////////////////
       this.currentProduct = null;
       this.setCurrentProduct = function(idx) {
-        // console.log('IDX',idx)
         if(idx && idx !== '0'){
           return $http.get('/api/products/' + idx)
           .then(function (data) {
             var memberProductData = data.data;
-            // console.log('PROD DATA', memberProductData)
             var products = Product.buildProductCollection(
               memberProductData.products,
               ProductSku.buildProductSkuCollection(memberProductData.productskus));
+            
             this.currentProduct = (products.length) ? products[0] : null;
-            // console.log('MY CUR', this.currentProduct)
+            
             return this.currentProduct;
           });
         } else {
@@ -41,19 +38,18 @@ angular.module('MyApp')
       ////////////////////////////////////////////////
       this.currentProductSku = null;
       this.setCurrentProductSku = function(idx) {
-        // console.log('IDX',idx)
         if(idx && idx !== '0'){
           return $http.get('/api/productskus/' + idx)
           .then(function (data) {
-            // console.log('set current',data)
             var memberProductData = data.data;
             var productskus = ProductSku.buildProductSkuCollection(
               memberProductData.productskus);
+            
             this.currentProductSku = (productskus.length) ? productskus[0] : null;
             if(this.currentProductSku){
               this.currentProductSku.parentProduct((memberProductData.products.length) ? memberProductData.products[0] : null);
             }
-            //console.log('MY CUR SKU', this.currentProductSku)
+            
             return this.currentProductSku;
           });
         } else {
@@ -66,14 +62,12 @@ angular.module('MyApp')
       ////////////////////////////////////////////////
       this.currentConfig = null;
       this.setCurrentConfig = function(idx) {
-        // console.log('IDX',idx)
         if(idx && idx !== '0'){
           return $http.get('/api/configs/' + idx)
           .then(function (data) {
-            // console.log('HEY WATCH', data)
             var configs = Config.buildConfigFromRow(data.data);
             this.currentConfig = (configs.length) ? configs[0] : null;
-            // console.log('MY CUR CFG', this.currentConfig)
+            
             return this.currentConfig;
           });
         } else {
@@ -86,7 +80,6 @@ angular.module('MyApp')
       ////////////////////////////////////////////////
       this.currentShow = null;
       this.setCurrentShow = function(idx) {
-        // console.log('IDX',idx)
         if(idx && idx !== '0'){
           return $http.get('/api/shows/' + idx)
           .then(function (data) {
@@ -94,8 +87,9 @@ angular.module('MyApp')
             var shows = Show.buildShowCollection(
               memberShowData.shows,
               ShowDate.buildShowDateCollection(memberShowData.showdates, memberShowData.showtickets));
+            
             this.currentShow = (shows.length) ? shows[0] : null;
-            // console.log('MY CUR', this.currentShow)
+            
             return this.currentShow;
           });
         } else {
@@ -115,11 +109,12 @@ angular.module('MyApp')
             var memberShowData = data.data;
             var showdates = ShowDate.buildShowDateCollection(
               memberShowData.showdates, memberShowData.showtickets);
+            
             this.currentShowDate = (showdates.length) ? showdates[0] : null;
             if(this.currentShowDate){
               this.currentShowDate.parentShow((memberShowData.shows.length) ? memberShowData.shows[0] : null);
             }
-            //console.log('MY CUR DATE', this.currentShowDate)
+            
             return this.currentShowDate;
           });
         } else {
@@ -132,7 +127,6 @@ angular.module('MyApp')
       ////////////////////////////////////////////////
       this.currentShowTicket = null;
       this.setCurrentShowTicket = function(idx) {
-        // console.log('IDX',idx)
         if(idx && idx !== '0'){
           return $http.get('/api/showtickets/' + idx)
           .then(function (data) {
@@ -148,7 +142,7 @@ angular.module('MyApp')
                 this.currentShowTicket.parentShowDate(_showDate);
               }
             }
-            // console.log('MY CUR TIX', this.currentShowTicket)
+            
             return this.currentShowTicket;
           });
         } else {
@@ -157,7 +151,7 @@ angular.module('MyApp')
       };
   
       ////////////////////////////////////////////////
-      // SHOWIMAGE Funcs
+      // TODO SHOWIMAGE Funcs
       ////////////////////////////////////////////////
       // this.currentShowImage = null;
       // this.setCurrentShowImage = function(idx) {

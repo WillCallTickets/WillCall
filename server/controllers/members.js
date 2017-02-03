@@ -116,10 +116,6 @@ exports.stripeConnectWebhook = function(req, res){
 exports.stripeLogin = function(req, res) {
   
   // var url = 'https://connect.stripe.com/oauth/authorize?response_type=code&client_id=';
-  // url += process.env.STRIPE_CLIENT_ID;
-  // url += '&scope=read_write';
-  // console.log('STRIPE LOGIN')
-  
   res.redirect('https://connect.stripe.com/oauth/authorize?' + qs.stringify({
     response_type: "code",
     scope: "read_write",
@@ -129,24 +125,20 @@ exports.stripeLogin = function(req, res) {
 };
 
 exports.stripeAuthCallback = function(req, res) {
-// console.log('STRIPE CALLBACK')
   var code = req.query.code;
 
   if(code) {
-    // console.log('STRIPE CODE', code)
     return exports.stripeGetAuthTokens(code)
     .then(function(_data){
-      // console.log('STRIPE AUTH TOKENS THEN')
       return ensureMembersTableEntry(_data);
     })
     .then(function(_member){
-      // console.log('STRIPE MEMBERS TABLE ENTRY THEN')
       res.render('memberToken', { memberToken: generateToken(_member) });
     });
   } else {
-    // console.log('STRIPE AUTH CALLBACK REDIRECT')
     // TODO  indicate user denied access
     // { error: 'access_denied', error_description: 'The user denied your request' }
+    
     res.redirect('/members/signin');
   }
 };

@@ -42,10 +42,6 @@ angular.module('MyApp').factory('Product',
   Product.processForm = function(form, input, currentProduct){
   
     var deferred = $q.defer();
-  
-    // console.log('FORM', form)
-    // console.log('INPUT', input)
-    // console.log('CURRENT', currentProduct)
       
     var errors = [];
       
@@ -59,7 +55,6 @@ angular.module('MyApp').factory('Product',
     })
     .catch(function(err){
       //convert err to array and return
-      // console.log('I CAUGHT it', err)
       errors.push(err.data);
       deferred.reject(errors);
     })
@@ -70,14 +65,12 @@ angular.module('MyApp').factory('Product',
   
   // Convert to Show Objects
   Product.buildProductCollection = function(productRows, skuModels) {
-    // console.log('building...', dateRows)
     return productRows.map(function (product) {
       var matches = skuModels.filter(e => e.product_id === product.id);
       if (matches.length > 1) {
         matches.sort('name');//(a, b) => a.name > b.name);
       }
       
-      // console.log('MATCHES',matches)
       return new Product(product, matches);
     });
   };

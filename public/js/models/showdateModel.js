@@ -39,11 +39,6 @@ angular.module('MyApp').factory('ShowDate',
     
         var deferred = $q.defer();
     
-        // console.log('FORM', form)
-        // console.log('INPUT', input)
-        // console.log('CURRENT SHOW', currentShow)
-        // console.log('CURRENT DATE', currentShowDate)
-    
         var errors = [];
         
         input.show_id = (currentShowDate) ?
@@ -59,7 +54,6 @@ angular.module('MyApp').factory('ShowDate',
         })
         .catch(function(err){
           //convert err to array and return
-          // console.log('I CAUGHT it', err)
           errors.push(err.data);
           deferred.reject(errors);
         })
@@ -70,13 +64,11 @@ angular.module('MyApp').factory('ShowDate',
   
       // Convert to ShowDate Objects
       ShowDate.buildShowDateCollection = function(dateRows, ticketRows) {
-        // console.log('building...', dateRows)
         return dateRows.map(function (date) {
           var matches = ticketRows.filter(e => e.showdate_id === date.id);
           if (matches.length > 1) {
             matches.sort((a, b) => a.price - b.price);
           }
-          // console.log('MATCHES', matches)
           return new ShowDate(date, matches);
         });
       };

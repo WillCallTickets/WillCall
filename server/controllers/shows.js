@@ -9,7 +9,6 @@ var showtickets = require('../../lib/dbops/showtickets');
 //////////////////////////////////////////////////////////////////////
 
 exports.getShowById = function(req, res){
-  // console.log('API CONFIG DATA', req.params)
   shows.getShowById(req.params.show_id)
   .then(function(data){
     res.json(data);
@@ -32,7 +31,6 @@ exports.createOrUpdateShow = function(req,res){
 //////////////////////////////////////////////////////////////////////
 
 exports.getShowDateById = function(req, res){
-  // console.log('API CONFIG DATA', req.params)
   showdates.getShowDateById(req.params.showdate_id)
   .then(function(data){
     res.json(data);
@@ -55,7 +53,6 @@ exports.createOrUpdateShowDate = function(req,res){
 //////////////////////////////////////////////////////////////////////
 
 exports.getShowTicketById = function(req, res){
-  // console.log('API CONFIG DATA', req.params)
   showtickets.getShowTicketById(req.params.showticket_id)
   .then(function(data){
     res.json(data);

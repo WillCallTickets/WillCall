@@ -28,7 +28,6 @@ angular.module('MyApp')
       
       $scope.view.showCatalog = null;
       $scope.populateShowCatalog = function(){
-        // console.log('fetch')
         $scope.view.StoreService.getStoreShowCatalog()
         .then(function(data){
           $scope.view.showCatalog = data;

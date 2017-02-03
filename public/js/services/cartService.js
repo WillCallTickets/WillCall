@@ -121,15 +121,11 @@ angular.module('MyApp')
       this.cartBasket = this.initBasket();
   
       this.saveCartToDb = function(){
-        console.log('SERVICE SAVING CART')
+        // console.log('SERVICE SAVING CART')
         // call api to save cart to db
         return $http.post('/api/store/cartrecord', {
           cart: JSON.stringify({idx: this.cartId, items: this.cartBasket})
         })
-        // .then(function(data){
-        //   console.log('Cart Saved to DB', data)
-        //   return;
-        // })
       }
     
     }]);

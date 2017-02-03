@@ -35,7 +35,6 @@ angular.module('MyApp')
     },
     templateUrl: 'partials/admin/brochures/add.html',
     controller: function($scope) {
-      // console.log('brocco');
       $scope.view = {};
       $scope.view.errors = [];
 
@@ -45,10 +44,8 @@ angular.module('MyApp')
       };
 
       $scope.submitBrochure = function(form){
-        // console.log('submitting', form);
         $scope.view.errors = [];
         if(form.brochure){
-          // console.log('got it');
           var _brochure = angular.copy(form.brochure);
           BrochureService.addBrochure(_brochure)
           .then(function(data){

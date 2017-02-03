@@ -5,5 +5,4 @@ angular.module('MyApp')
     var _self = this;
     this.listing = null;
 
-
   }]);

@@ -13,15 +13,6 @@ angular.module('MyApp')
       $scope.view = {};
       $scope.view.ContextService = ContextService;
       $scope.view.MembersService = MembersService;
-  
-  
-      // console.log('MEMBERS LOCATION', $location);
-      // console.log('MEMBERS STATE', $stateParams);
-      // console.log('CONTEXT SERVICE', ContextService);
-      // console.log('MEMBERS SERVICE', MembersService);
-      
-      
-  
       
       // Navigation helper
       $scope.isRouteActive = function(route) {
@@ -31,16 +22,13 @@ angular.module('MyApp')
       // Member Signin & Logout
       $scope.stripeSignin = function(){
         $http.get('/stripe/login').then(function(data){
-          // console.log('logged in?')
         });
       };
       $scope.memberLogout = function(){
-        // console.log('Signing out')
         $scope.view.ContextService.memberLogout();
         $scope.view.configList = null;
         $location.path('/members/signin');
       };
-      
   
       $scope.view.currentConfigId = function(){
         return $stateParams['config_id']
@@ -92,7 +80,6 @@ angular.module('MyApp')
       // list assigns - be sure to init below
       $scope.view.configList = null;
       $scope.populateConfig = function(){
-        // console.log('populate')
         $scope.view.MembersService.getConfigCollection()
         .then(function(data){
           $scope.view.configList = data;
@@ -119,7 +106,6 @@ angular.module('MyApp')
       $scope.populateProductList = function(){
         $scope.view.MembersService.getMemberProductListing()
         .then(function(data){
-          // console.log('LISTING', data)
           $scope.view.productList = data;
         })
       };
@@ -130,6 +116,4 @@ angular.module('MyApp')
       $scope.populateShowList();
       $scope.populateEventQs();
       $scope.populateProductList();
-    
-      // console.log('MEM LIST',$scope.view.configList )
 }]);

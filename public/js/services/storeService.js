@@ -8,15 +8,10 @@ angular.module('MyApp')
 
       var _self = this;
       
-      
-      // console.log("STORE SERVICE LOADED")
-      
-      
       // catalog uses showdates as root
       this.getStoreShowCatalog = function(){
         return $http.get('/api/store/shows/catalog')
         .then(function (data) {
-          // console.log('DATA RETURNED AT SERVICE',data.data)
           var showData = data.data;
           
           // build catalog - for shows, we want to base on showdates
@@ -41,7 +36,7 @@ angular.module('MyApp')
             });
             return e;
           });
-          // console.log('DATE MODELS DEUX', rec[0])
+          
           return rec;
         });
       };
@@ -49,7 +44,7 @@ angular.module('MyApp')
       this.getStoreProductCatalog = function(){
         return $http.get('/api/store/products/catalog')
         .then(function (data) {
-          // console.log('DATA RETURNED AT SERVICE',data.data)
+          
           var productData = data.data;
           var productModels = Product.buildProductCollection(
             productData.products,

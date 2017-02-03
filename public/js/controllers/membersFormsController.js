@@ -45,6 +45,7 @@ angular.module('MyApp')
         // var parentState = $state.current.name.split('.').slice(0,-1).join('.');
         var currentState = $state.current.name;
         //TODO it may just be showdates, showtickets and productskus breaking the mold
+        
         var goto = 'members.shows';
         if(currentState.indexOf('members.products') !== -1) {
           goto = 'members.products';
@@ -61,7 +62,6 @@ angular.module('MyApp')
       //  due to the form using strings vs boolean
       $scope.submitForm = function(form, context) {
         $scope.view.errors = null;
-        // console.log('FORM',context, form)
         
         if(form.$valid && form.entity) {
           var _entity = angular.copy(form.entity);
@@ -86,14 +86,12 @@ angular.module('MyApp')
             refreshMethod = $scope.$parent.populateShowList;
             setCurrent = $scope.view.ContextService.setCurrentShow;
           } else if (context === 'showdate') {
-            // console.log('SHOWDate',$scope.view.ContextService.currentShowDate)
             formSubmit = ShowDate.processForm(form, _entity,
               $scope.view.ContextService.currentShowDate,
               $scope.view.ContextService.currentShow);
             listToRefresh = $scope.$parent.view.showList;
             refreshMethod = $scope.$parent.populateShowList;
             setCurrent = $scope.view.ContextService.setCurrentShowDate;
-            // console.log('SHOWDate',setCurrent)
           }  else if (context === 'showticket') {
             formSubmit = ShowTicket.processForm(form, _entity,
               $scope.view.ContextService.currentShowTicket,

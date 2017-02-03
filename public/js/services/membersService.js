@@ -69,19 +69,5 @@ angular.module('MyApp')
             });
           }
       };
-  
-  
-  
-  
-      // this.getConfigCollection = function(){
-      //   if(ContextService.currentMember) {
-      //     return $http.get('/api/members/' + ContextService.currentMember.id + '/configs')
-      //     .then(function(data){
-      //       return data.data;
-      //     });
-      //   } else {
-      //     return [];
-      //   }
-      // };
-         
+             
   }]);

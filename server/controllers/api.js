@@ -8,6 +8,7 @@ var moment = require('moment');
 var request = require('request');
 var qs = require('querystring');
 var knex = require('../../config/db/knex');
+
 var members = require('../../lib/dbops/members');
 var events = require('../../lib/dbops/events');
 var shows = require('../../lib/dbops/shows');

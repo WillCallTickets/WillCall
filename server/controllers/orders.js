@@ -21,9 +21,6 @@ exports.stripeVerifyCallback = function(req, res) {
   })
   .then(function(charge){
     _charge = charge;
-    
-    // console.log('CHARGES', _charge);
-    
     res.redirect('/orders/success');
   })
   .catch(function(err){

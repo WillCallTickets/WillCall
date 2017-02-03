@@ -51,12 +51,7 @@ angular.module('MyApp')
   ProductSku.processForm = function(form, input, currentProductSku, currentProduct){
     
     var deferred = $q.defer();
-    
-    // console.log('FORM', form)
-    // console.log('INPUT', input)
-    // console.log('CURRENT PRODUCT', currentProduct)
-    // console.log('CURRENT SKU', currentProductSku)
-    
+                    
     var errors = [];
   
     input.product_id = (currentProductSku) ?
@@ -72,7 +67,6 @@ angular.module('MyApp')
     })
     .catch(function(err){
       //convert err to array and return
-      // console.log('I CAUGHT it', err)
       errors.push(err.data);
       deferred.reject(errors);
     })
@@ -83,7 +77,6 @@ angular.module('MyApp')
   
   // Convert to ShowTicket Objects
   ProductSku.buildProductSkuCollection = function(productskuRows) {
-    // console.log('building...', dateRows)
     return productskuRows.map(function (productsku) {
       return new ProductSku(productsku);
     });

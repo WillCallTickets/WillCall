@@ -5,15 +5,14 @@ var products = require('../../lib/dbops/products');
 var shows = require('../../lib/dbops/shows');
 var invoices = require('../../lib/dbops/invoices');
 
-
+// Notes on Stripe
 // https://stripe.com/docs/recipes/variable-amount-checkout
 // http://code.tutsplus.com/tutorials/how-to-accept-payments-with-stripe--pre-80957
 // some sort of hack for price info???
 // https://www.masteringmodernpayments.com/blog/using-stripe-checkout-for-subscriptions
 
+
 exports.stripeVerifyCallback = function(req, res) {
-  // console.log('/////////////////', res);
-  // console.log('/////////////////');
   
   console.log('debug VERIFY CALLBACK STRIPE', req.params, req.body);
   var token = req.body.stripeToken;
@@ -27,8 +26,8 @@ exports.stripeVerifyCallback = function(req, res) {
     var amountToCharge = data.balancedue;
     
     // TODO validate amount against db - look for tampering
-  
     // Get the credit card details submitted by the form
+    //TODO verify matching amounts - correct amount
     
     var stripe = require("stripe")(process.env.STRIPE_SECRET);
   
@@ -66,37 +65,6 @@ exports.stripeVerifyCallback = function(req, res) {
     });
     
   })
-  
-  //TODO verify matching amounts - correct amount
-  
-  //
-  // // console.log('STRIPE', stripe)
-  //
-  // // Create a charge: this will charge the user's card
-  // var _charge = null;
-  // stripe.charges.create({
-  //   amount: 999, // Amount in cents
-  //   currency: "usd",
-  //   source: token,
-  //   receipt_email: eml,
-  //   description: "TODO: list invoice items here"
-  // })
-  // .then(function(charge){
-  //   _charge = charge;
-  //
-  //   // _charge.id,.amount,.created,.failure_code, .failure_message
-  //   // .livemode:true, paid:true, receipt_email
-  //   // status:'succeeded'
-  //
-  //   // console.log('CHARGES', _charge);
-  //   res.redirect('/store/checkout/success');
-  // })
-  // .catch(function(err){
-  //   console.log('THE CARD HAS BEEN DECLINED', err)
-  //   // TODO save the error in session? for display in verify page
-  //   // redirect to verify
-  //   res.redirect('/store/checkout/success');
-  // })
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -105,7 +73,6 @@ exports.stripeVerifyCallback = function(req, res) {
 
 // retrieve active shows/dates/etc to be built by client
 exports.saveStoreCart = function(req,res){
-  // console.log('SVR CTRL SaveStoreCart')
   invoices.saveCart(req.body)
   .then(function(data){
     console.log('WE HAVE RETURNED TO API', data)

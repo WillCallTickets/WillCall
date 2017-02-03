@@ -15,14 +15,6 @@ angular.module('MyApp').factory('Config',
       this.active = row.active;
       this.allowoverride = row.allowoverride;
     };
-    
-    // Config.prototype = {
-      // firstDate: function(){
-      //   return moment(this.showDates.map(e => e)
-      //     .sort((a,b) => a.dateofshow - b.dateofshow)[0].dateofshow)
-      //     .format('YYYY/MM/DD hh:mm a');
-      // }
-    // };
   
     ////////////////////////////////////////////
     // STATIC methods
@@ -31,10 +23,6 @@ angular.module('MyApp').factory('Config',
     Config.processForm = function(form, input, currentConfig){
     
       var deferred = $q.defer();
-    
-      // console.log('FORM', form)
-      // console.log('INPUT', input)
-      // console.log('CURRENT', currentConfig)
     
       var errors = [];
       
@@ -48,7 +36,6 @@ angular.module('MyApp').factory('Config',
       })
       .catch(function(err){
         //convert err to array and return
-        // console.log('I CAUGHT it', err)
         errors.push(err.data);
         deferred.reject(errors);
       })

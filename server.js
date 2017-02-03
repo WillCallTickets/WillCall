@@ -63,13 +63,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ROUTES
 ////////////////////////////////////////////////////////////
 
-/////////////////////////
-// Stripe
-/////////////////////////
-app.get('/stripe/login',              membersController.stripeLogin);
-app.get('/stripe/callback',           membersController.stripeAuthCallback);
-app.post('/stripe/webhook/account/',  membersController.stripeAccountWebhook);
-app.post('/stripe/webhook/connect/',  membersController.stripeConnectWebhook);
+const stripe = require('./routes/stripe');
+app.use('/stripe', stripe);
+
+// /////////////////////////
+// // Stripe
+// /////////////////////////
+// app.get('/stripe/login',              membersController.stripeLogin);
+// app.get('/stripe/callback',           membersController.stripeAuthCallback);
+// app.post('/stripe/webhook/account/',  membersController.stripeAccountWebhook);
+// app.post('/stripe/webhook/connect/',  membersController.stripeConnectWebhook);
 
 
 /////////////////////////
@@ -111,15 +114,14 @@ app.get('/api/members/:member_id/shows',                membersController.getMem
 // orders
 app.post('/store/checkout',                             storeController.stripeVerifyCallback);
 
-// app.post('/orders/verify',          ordersController.stripeVerifyCallback);
 
-
-// Api borchures and env keys
+// Api brochures and env keys
 app.get('/api/brochures',           apiController.getBrochures);
 app.post('/api/brochures',          apiController.addBrochure);
 app.get('/api/brochures/:id',       apiController.getBrochure);
 app.put('/api/brochures/:id',       apiController.updateBrochure);
 app.get('/api/envkey/:keyname',     apiController.getEnvKey);
+
 
 // Proxy Resource - resolves by correcting https and http for resources
 app.get('/proxyresource/:resourceurl',

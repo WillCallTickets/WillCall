@@ -18,14 +18,7 @@ var moment              = require('moment');
 
 
 // Controllers
-var apiController       = require('./server/controllers/api');
-var productsController  = require('./server/controllers/products');
-var showsController     = require('./server/controllers/shows');
 var resourceController  = require('./server/controllers/resource');
-var membersController   = require('./server/controllers/members');
-var ordersController    = require('./server/controllers/orders');
-var storeController     = require('./server/controllers/store');
-
 
 // Declare app and configure
 var app = express();

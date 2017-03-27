@@ -1,12 +1,26 @@
+////////////////////////////////////////////////////////////
+// MembersForm Controller
+//
+// The membersForm controller employs a number of services to
+// handle the various form submissions made to a members' collections
+// Note the passing of methods in the submit form method
+////////////////////////////////////////////////////////////
+
 angular.module('wctApp')
 .controller('MembersFormsController',
-  ['$scope', '$stateParams', '$http', 'ContextService', '$state',
+  ['$scope', '$stateParams', '$http',
+    'ContextService',
+    '$state',
     'Config',
     'Show', 'ShowDate', 'ShowTicket',
     'Product', 'ProductSku',
   
-    function ($scope, $stateParams, $http, ContextService, $state,
-              Config, Show, ShowDate, ShowTicket, Product, ProductSku) {
+    function ($scope, $stateParams, $http,
+              ContextService,
+              $state,
+              Config,
+              Show, ShowDate, ShowTicket,
+              Product, ProductSku) {
     
       $scope.view = {};
       $scope.view.ContextService = ContextService;
@@ -26,6 +40,7 @@ angular.module('wctApp')
         $state.reload();
       };
       
+      // reset everything!
       var cleanupFormAndReturn = function(form){
         $scope.view.ContextService.currentConfig = null;
         $scope.view.ContextService.currentShow = null;
@@ -34,7 +49,7 @@ angular.module('wctApp')
         $scope.view.ContextService.currentProduct = null;
         $scope.view.ContextService.currentProductSku = null;
        
-        // clean up the form and return!
+        // clean up the form and return
         form.entity = {};
         form.$setPristine();
         form.$setUntouched();
@@ -42,12 +57,11 @@ angular.module('wctApp')
         redirectToPreviousState();
       };
   
+      // establish the redirect path
       var redirectToPreviousState = function(){
-        // var parentState = $state.current.name.split('.').slice(0,-1).join('.');
         var currentState = $state.current.name;
-        //TODO it may just be showdates, showtickets and productskus breaking the mold
-        
         var goto = 'members.shows';
+        
         if(currentState.indexOf('members.products') !== -1) {
           goto = 'members.products';
         } else if (currentState.indexOf('members.configs') !== -1) {
@@ -55,7 +69,6 @@ angular.module('wctApp')
         }
         $state.go(goto);
       };
-      
       
       // Keep an eye on datetime-picker as it may always report due
       //  to formatting changes from model date to date format
@@ -132,6 +145,7 @@ angular.module('wctApp')
               });
             }, 2500);
             
+            // set the current object based on context
             if(setCurrent){
               setCurrent(idx).then(function(data){
                 if(context === 'config') {

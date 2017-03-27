@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////
+// Header Controller
+//
+// The header controller employs the Context service and
+// sets up methods to handle navigation
+////////////////////////////////////////////////////////////
 
 angular.module('wctApp')
     .controller('HeaderCtrl', HeaderCtrl);

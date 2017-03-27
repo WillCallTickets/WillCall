@@ -55,6 +55,8 @@ angular.module('wctApp').factory('Show',
   };
   
   // STATIC methods
+    
+  // process form input
   Show.processForm = function(form, input, currentShow){
   
     var deferred = $q.defer();
@@ -83,7 +85,7 @@ angular.module('wctApp').factory('Show',
   };
     
   
-  // Convert to Show Objects
+  // Convert db rows and showDate collection to Show Objects
   Show.buildShowCollection = function(showRows, dateModels) {
     // console.log('building...', dateRows)
     return showRows.map(function (show) {

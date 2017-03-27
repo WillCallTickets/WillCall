@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////
+// Users Controller
+//
+// The users controller will handle user operations such as
+// forgot-password, profile changes, etc
+////////////////////////////////////////////////////////////
 
 angular.module('wctApp')
 .controller('UsersController',

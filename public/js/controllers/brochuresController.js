@@ -1,3 +1,8 @@
+////////////////////////////////////////////////////////////
+// Brochure Controller
+//
+// The brochure controller employs the Brochure service
+////////////////////////////////////////////////////////////
 
 angular.module('wctApp')
     .controller('BrochureController', BrochureController);
@@ -9,6 +14,7 @@ function BrochureController($scope, $location, BrochureService) {
     $scope.view = {};
     $scope.view.BrochureService = BrochureService;
 
+    // reset add mode and redirect to listing
     $scope.cancel = function(){
         BrochureService.setAddMode(false);
         $location.path('/admin/brochures');
@@ -18,6 +24,7 @@ function BrochureController($scope, $location, BrochureService) {
         BrochureService.setAddMode(active);
     };
 
+    // handle form submission
     $scope.updateBrochure = function(form){
         $scope.view.errors = [];
         $scope.view.alerts = [];

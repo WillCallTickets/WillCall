@@ -1,4 +1,4 @@
-angular.module('MyApp').factory('Product',
+angular.module('wctApp').factory('Product',
   ['$http', '$q', 'moment', function($http, $q, moment){
   
   function Product(row, skuModels = null){
@@ -25,7 +25,6 @@ angular.module('MyApp').factory('Product',
   };
     
   Product.prototype = {
-    
     // only issue a warning if it will cause a show not to display tickets
     skuWarningIfEmpty: function(){
       return this.productskus.filter(function (itm) {
@@ -34,11 +33,7 @@ angular.module('MyApp').factory('Product',
     }
   };
   
-  
-  ////////////////////////////////////////////
   // STATIC methods
-  ////////////////////////////////////////////
-  
   Product.processForm = function(form, input, currentProduct){
   
     var deferred = $q.defer();
@@ -76,4 +71,5 @@ angular.module('MyApp').factory('Product',
   };
   
   return Product;
+  
 }]);

@@ -1,15 +1,14 @@
 
-var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
+var app = angular.module('wctApp',
+  ['ui.router', 'satellizer','angular-jwt',
   'angularMoment', 'ui.bootstrap.datetimepicker', 'ui.dateTimeInput'])
 .config(function($stateProvider, $urlRouterProvider, $locationProvider,
                  $httpProvider, $authProvider) {
-  
-  
+    
   $locationProvider.html5Mode(true);
   $httpProvider.interceptors.push('jwtMemberInterceptor');
   $urlRouterProvider.otherwise('/');
-  
-  
+    
   $stateProvider
   .state('home', {
     url: '/',
@@ -72,12 +71,6 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
     }
   })
     
-    
-    
-    
-    
-    
-    
   /*
     MEMBERS AREA
    */
@@ -106,6 +99,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
     url: '/eventqs',
     templateUrl: 'partials/members/eventqs.html',
   })
+    
   ///////////////////////////////
   // Member Configs
   ///////////////////////////////
@@ -128,6 +122,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
       });
     }],
   })
+    
   ///////////////////////////////
   // Member Shows
   ///////////////////////////////
@@ -150,6 +145,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
       });
     }],
   })
+    
   ///////////////////////////////
   // Member ShowDates
   ///////////////////////////////
@@ -171,6 +167,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
       });
     }],
   })
+    
   ///////////////////////////////
   // Member ShowTickets
   ///////////////////////////////
@@ -192,6 +189,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
       });
     }],
   })
+    
   ///////////////////////////////
   // Member ShowImages
   ///////////////////////////////
@@ -213,6 +211,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
       });
     }],
   })
+    
   ///////////////////////////////
   // Member Products
   ///////////////////////////////
@@ -235,6 +234,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
       });
     }],
   })
+    
   ///////////////////////////////
   // Member ProductSkus
   ///////////////////////////////
@@ -256,6 +256,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
       });
     }],
   })
+    
   ///////////////////////////////
   // Member Dashboard
   ///////////////////////////////
@@ -263,6 +264,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
     url: '/dashboard',
     templateUrl: 'partials/members/dashboard.html',
   })
+    
   ///////////////////////////////
   // Member Errors
   ///////////////////////////////
@@ -331,6 +333,7 @@ var app = angular.module('MyApp', ['ui.router', 'satellizer','angular-jwt',
   // });
   
   
+  // TODO see cartService - store the cart upon checkout
   function storeCart($stateParams, CartService){
     // console.log('storing cart')
     

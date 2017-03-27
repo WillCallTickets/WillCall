@@ -1,10 +1,20 @@
+////////////////////////////////////////////////////////////
+// Store Service
+//
+// Store related services
+////////////////////////////////////////////////////////////
 
-angular.module('MyApp')
-  .service('StoreService', ['$http', '$q', '$stateParams', 'ContextService',
-    'Show', 'ShowDate', 'ShowTicket', 'Product', 'ProductSku',
+angular.module('wctApp')
+  .service('StoreService',
+    [ '$http', '$q', '$stateParams',
+      'ContextService',
+      'Show', 'ShowDate', 'ShowTicket',
+      'Product', 'ProductSku',
     
     function($http, $q, $stateParams,
-             ContextService, Show, ShowDate, ShowTicket, Product, ProductSku){
+             ContextService,
+             Show, ShowDate, ShowTicket,
+             Product, ProductSku){
 
       var _self = this;
       

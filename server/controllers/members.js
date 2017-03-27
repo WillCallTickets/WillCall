@@ -1,11 +1,13 @@
 require('dotenv').config({silent:true});
+
 var async = require('async');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var jwt = require('jsonwebtoken');
 var moment = require('moment');
-var request = require('request');
 var qs = require('querystring');
+var request = require('request');
+
 var members = require('../../lib/dbops/members');
 var products = require('../../lib/dbops/products');
 var events = require('../../lib/dbops/events');
@@ -62,6 +64,7 @@ exports.getMemberEvents = function(req, res){
   });
 };
 
+
 //////////////////////////////////////////////////////////////////////
 // MEMBER CONFIGS
 //////////////////////////////////////////////////////////////////////
@@ -112,8 +115,6 @@ exports.stripeConnectWebhook = function(req, res){
 //////////////////////////////////////////////////////////////////////
 
 exports.stripeLogin = function(req, res) {
-  
-  // var url = 'https://connect.stripe.com/oauth/authorize?response_type=code&client_id=';
   res.redirect('https://connect.stripe.com/oauth/authorize?' + qs.stringify({
     response_type: "code",
     scope: "read_write",
@@ -142,15 +143,11 @@ exports.stripeAuthCallback = function(req, res) {
 };
 
 
-
 //////////////////////////////////////////////////////////////////////
 // AuthCallback Helper Funcs
 //////////////////////////////////////////////////////////////////////
 
-
-// ensureMembersTableEntry
-// Determine if member row exists the update
-//   with new stripe token info
+// Determine if member row exists with stripe token info
 function ensureMembersTableEntry(body){
   var _stripeid     = body.stripe_user_id;
   var _accessToken  = body.access_token;

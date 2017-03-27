@@ -1,15 +1,25 @@
+////////////////////////////////////////////////////////////
+// Member Service
+//
+// Services for members area - setting up a member's store
+////////////////////////////////////////////////////////////
 
-angular.module('MyApp')
-  .service('MembersService', ['$http', '$q', '$stateParams', 'ContextService',
-    'Show', 'ShowDate', 'ShowTicket', 'Product', 'ProductSku',
+angular.module('wctApp')
+  .service('MembersService',
+    [ '$http', '$q', '$stateParams',
+      'ContextService',
+      'Show', 'ShowDate', 'ShowTicket',
+      'Product', 'ProductSku',
     
     function($http, $q, $stateParams,
-             ContextService, Show, ShowDate, ShowTicket, Product, ProductSku){
+             ContextService,
+             Show, ShowDate, ShowTicket,
+             Product, ProductSku){
 
       var _self = this;
       this.listing = null;
       
-      
+      // retrieve members event logs
       this.getMemberEvents = function(){
           if (ContextService.currentMember) {
             return $http.get('/api/members/' + ContextService.currentMember.id + '/events')
@@ -23,11 +33,14 @@ angular.module('MyApp')
           }
       };
         
+      // retrieve product listing for current member
       this.getMemberProductListing = function(){
         if (ContextService.currentMember) {
           return $http.get('/api/members/' + ContextService.currentMember.id + '/products')
           .then(function (data) {
             var memberProductData = data.data;
+  
+            // construct the collection per the model
             return Product.buildProductCollection(
               memberProductData.products,
               ProductSku.buildProductSkuCollection(memberProductData.productskus));
@@ -38,13 +51,15 @@ angular.module('MyApp')
           });
         }
       };
-        
+  
+      // retrieve show listing for current member
       this.getMemberShowListing = function(){
           if (ContextService.currentMember) {
             return $http.get('/api/members/' + ContextService.currentMember.id + '/shows')
             .then(function (data) {
-              // console.log('DATA RETURNED AT SERVICE',data.data)
               var memberShowData = data.data;
+              
+              // construct the collection per the model
               return Show.buildShowCollection(
                 memberShowData.shows,
                 ShowDate.buildShowDateCollection(memberShowData.showdates, memberShowData.showtickets));
@@ -55,8 +70,8 @@ angular.module('MyApp')
             });
           }
       };
-    
-      
+  
+      // retrieve config var listing for current member
       this.getConfigCollection = function(){
           if(ContextService.currentMember) {
             return $http.get('/api/members/' + ContextService.currentMember.id + '/configs')

@@ -1,5 +1,7 @@
+// FILTERS
 
-  angular.module('MyApp')
+  angular.module('wctApp')
+  // remove protocol from a url
   .filter('removeProtocol', function () {
     return function (input) {
       if (input) {
@@ -8,6 +10,7 @@
       }
     }
   })
+  // encode a resource - for help with secure content
   .filter('proxyResource', function () {
     return function (input) {
       if (input) {
@@ -16,6 +19,7 @@
       }
     }
   })
+  // allow $sce to trust content
   .filter('trustMe', ['$sce', function($sce){
     return function(input){
       if(input){

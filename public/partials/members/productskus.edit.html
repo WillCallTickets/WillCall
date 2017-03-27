@@ -12,7 +12,6 @@
         <h4 class="panel-title col-xs-5">Product SKU Editor</h4>
   
         <h4 class="panel-title col-xs-7 text-right" >
-          <!--alot |{{!_form.entity.allotted || _form.entity.allotted.toString().trim().length}}|-->
           <a ng-if="!_form.entity.allotted ||
                     _form.entity.allotted.toString().trim().length === 0 ||
                     _form.entity.allotted <= 0 ||
@@ -42,7 +41,7 @@
                      ng-max-length="512">
             </div>
           </div>
-          <!-- TODO Bagging attribs for now-->
+          <!-- TODO implement attribs at some point -->
           <div class="form-group"
                ng-class="{  'has-error' : _form.f_price.$invalid && _form.f_price.$touched}">
             <label class="col-xs-3" for="f_price">Price</label>
@@ -95,7 +94,7 @@
               <span class="badge badge-primary inventory-name">Sold
                 <span class="badge badge-default">{{(view.ContextService.currentProductSku) ? view.ContextService.currentProductSku.sold : 0}}</span>
               </span>
-              <!--<span class="badge badge-primary inventory-name">Refunds-->
+              <!-- TODO <span class="badge badge-primary inventory-name">Refunds-->
                 <!--<span class="badge badge-default">{{view.ContextService.currentProductSku.refunded}}</span>-->
               <!--</span>-->
               <span class="badge badge-primary inventory-name">Avail
@@ -130,7 +129,11 @@
                   class="btn btn-sm btn-primary">Reset</button>
         </div>
         <div class=" col-xs-5">
-          <div style="height:30px;line-height:30px;" ng-show="view.getSuccessMessage().trim().length > 0" class="text-success"><strong>{{view.getSuccessMessage()}}</strong></div>
+          <div style="height:30px;line-height:30px;"
+               ng-show="view.getSuccessMessage().trim().length > 0"
+               class="text-success">
+            <strong>{{view.getSuccessMessage()}}</strong>
+          </div>
         </div>
         <div class="col col-xs-2 text-right">
           <button ng-disabled="true"

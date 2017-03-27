@@ -1,7 +1,9 @@
 
-angular.module('MyApp')
-.controller('StoreController', ['$scope', '$location', '$window', '$stateParams',
+angular.module('wctApp')
+.controller('StoreController',
+  ['$scope', '$location', '$window', '$stateParams',
     'ContextService', 'StoreService', 'CartService', '$http', '$state',
+  
     function ($scope, $location, $window, $stateParams,
               ContextService, StoreService, CartService, $http, $state) {
 

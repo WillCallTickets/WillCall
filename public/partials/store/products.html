@@ -1,6 +1,4 @@
 <div class="panel panel-area item-catalog show-catalog">
-  <!--Catalog {{view.productCatalog}}-->
-  
   <table class="table table-bordered table-striped table-condensed table-listing">
     <theader>
       <tr>
@@ -10,30 +8,28 @@
     </theader>
     
     <tbody>
-    <tr class="catalog-item show-catalog" ng-repeat="product in view.productCatalog">
-      <td style="width:60%;">
+    <tr class="catalog-item show-catalog"
+        ng-repeat="product in view.productCatalog">
+      <td class="catalog-cell">
         <div class="catalog-product-container">
-          <span ng-if="product.status==='sold out'" class="soldout-showdate soldout-product">
-            <!--{{showdate.status}}-->
+          <span ng-if="product.status==='sold out'"
+                class="soldout-showdate soldout-product">
+            <!--TODO include other statii - {{showdate.status}}-->
             <img ng-src="/images/soldout.png" />
           </span>
           <div class="product-division">
-            <button class="width-150 text-left" style="margin-bottom:5px;" disabled>
+            <button class="width-150 text-left" disabled>
               <span class="glyphicon glyphicon-tag"></span>
                 {{product.division}}
-              <!--<span ng-if="product.division==='art'">Artwork</span>-->
-              <!--<span ng-if="product.division==='apparel'">Apparel</span>-->
-              <!--<span ng-if="product.division==='media'">Media</span>-->
-              <!--<span ng-if="product.division==='posters'">Posters</span>-->
-              <!--<span ng-if="product.division==='downloads'">Downloads</span>-->
             </button>
           </div>
           <h3>{{product.name}}</h3>
           <h6>{{product.description}}</h6>
         </div>
       </td>
-      <td width="40%">
-        <div class="width-225 catalog-ticket-container btn-clr{{$index}}" ng-repeat="productsku in product.productskus">
+      <td class="sku-cell">
+        <div class="width-225 catalog-ticket-container btn-clr{{$index}}"
+             ng-repeat="productsku in product.productskus">
           <div style="white-space: nowrap">{{productsku.name}}</div>
           <div style="position:relative">
             <div class="col-xs-4 no-lr-pad">

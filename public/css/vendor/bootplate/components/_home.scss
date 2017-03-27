@@ -1,0 +1,36 @@
+
+.home-panel {
+  max-width: 1000px;
+  
+  .panel-body {
+    background-color: rgba(42, 57, 144, .9);
+    color: #f6f6f6;
+    opacity: 1;
+    border-radius: 5px;
+    
+    h3 {
+      font-size: 1.3em;
+      height: 35px;
+      margin-bottom: 1em;
+    }
+    p {
+      font-size: .9em;
+      height: 115px;
+    }
+    a.btn {
+      margin: 10px auto 0 auto;
+    }
+  }
+}
+
+wct-brochure-display {
+  width: 85%;
+  
+  h3 {
+    text-align: center;
+  }
+  
+  .panel {
+    max-width: 260px;
+  }
+}

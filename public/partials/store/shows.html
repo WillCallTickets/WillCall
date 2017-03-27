@@ -1,5 +1,4 @@
 <div class="panel panel-area item-catalog show-catalog">
-  <!--Catalog {{view.showCatalog}}-->
   
   <table class="table table-bordered table-striped table-condensed table-listing">
     <theader>
@@ -8,13 +7,12 @@
         <th>tickets</th>
       </tr>
     </theader>
-  
     <tbody>
       <tr class="catalog-item show-catalog" ng-repeat="showdate in view.showCatalog">
-        <td style="width:60%;">
+        <td class="catalog-cell">
           <div class="catalog-show-container">
             <span ng-if="showdate.status==='sold out'" class="soldout-showdate">
-              <!--{{showdate.status}}-->
+              <!--TODO include other show statii - {{showdate.status}}-->
               <img ng-src="/images/soldout.png" />
             </span>
             <h5>{{showdate.dateofshow | amDateFormat:'ddd YYYY/MM/DD hh:mm A'}} {{showdate.ages}}</h5>
@@ -24,10 +22,10 @@
             <h6>{{showdate.billing}}</h6>
           </div>
         </td>
-        <td width="40%">
-          <div class="width-225 catalog-ticket-container btn-clr{{$index}}" ng-repeat="showticket in showdate.showtickets">
-            
-            <div style="white-space: nowrap">{{showticket.ages}} {{showticket.name}}</div>
+        <td class="sku-cell">
+          <div class="width-225 catalog-ticket-container btn-clr{{$index}}"
+               ng-repeat="showticket in showdate.showtickets">
+            <div class="no-wrap">{{showticket.ages}} {{showticket.name}}</div>
             <div style="position:relative">
               <div class="col-xs-4 no-lr-pad">
                 <h3 class="tkt-price">{{showticket.price | currency}}</h3>

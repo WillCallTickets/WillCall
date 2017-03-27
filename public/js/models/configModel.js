@@ -1,5 +1,6 @@
-angular.module('MyApp').factory('Config',
-  ['$http', '$q', 'moment', function($http, $q, moment){
+angular.module('wctApp')
+.factory('Config',
+  [ '$http', '$q', 'moment', function($http, $q, moment){
   
     function Config(row, dateModels = null){
       this.id = row.id;
@@ -16,10 +17,7 @@ angular.module('MyApp').factory('Config',
       this.allowoverride = row.allowoverride;
     };
   
-    ////////////////////////////////////////////
     // STATIC methods
-    ////////////////////////////////////////////
-    
     Config.processForm = function(form, input, currentConfig){
     
       var deferred = $q.defer();
@@ -51,4 +49,5 @@ angular.module('MyApp').factory('Config',
     };
   
   return Config;
+  
 }]);

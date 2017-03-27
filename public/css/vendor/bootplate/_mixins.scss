@@ -1,0 +1,36 @@
+
+/* helpers
+though most of these classes are not true mixins, this seemed the appropriate
+place for them to live
+ */
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.no-lr-pad {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.quarter-width {
+  width: 25%;
+}
+
+.well-no-color {
+  border: none;
+  background: rgba(255, 255, 255, .1);
+}
+

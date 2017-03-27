@@ -1,5 +1,5 @@
 
-angular.module('MyApp')
+angular.module('wctApp')
     .controller('OrdersController', OrdersController);
 
 OrdersController.$inject = ['$scope', '$location', 'ContextService', 'OrdersService'];

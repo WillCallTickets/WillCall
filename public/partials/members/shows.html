@@ -8,19 +8,18 @@
             title="add new show"
             class="width-150 btn-add"
             ng-click="rowEdit('show');">
-            <!--<i class="fa fa-plus" aria-hidden="true"></i>-->
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             Add New Show
           </button>
         </th>
         <th>dates</th>
         <th>tickets</th>
-        <!--<th>images</th>-->
+        <!--TODO  include images for shows <th>images</th>-->
       </tr>
     </theader>
     <tbody>
       <tr class="show-item" ng-repeat="show in view.showList">
-        <td style="width:50%;">
+        <td class="half-width">
           <div class="show-command">
             <button
               type="button"
@@ -70,7 +69,7 @@
             <span class="item-description"><small>{{show.description}}</small></span>
           </div>
         </td>
-        <td width="25%">
+        <td class="quarter-width">
           <div class="show-date-repeater btn-clr{{$index}}" ng-repeat="showdate in show.showdates">
             <button
               type="button"
@@ -91,7 +90,9 @@
           </button>
         </td>
         <td>
-          <div class="pull-left show-date-repeater btn-clr{{$index}}" style="width:100%;padding:5px 5px 2px 5px;margin-bottom:5px;" ng-repeat="showdate in show.showdates">
+          <div class="pull-left show-date-repeater btn-clr{{$index}} "
+               style="width:100%;padding:5px 5px 2px 5px;margin-bottom:5px;"
+               ng-repeat="showdate in show.showdates">
             <div style="font-size:.75em;font-weight:bold;color:#888;margin-top:-5px;margin-bottom:2px;">{{showdate.dateofshow | amDateFormat:'ddd YYYY/MM/DD hh:mm a'}}</div>
             <div class="col-xs-6 text-left ticket-container" style="padding-left:0;">
               

@@ -1,35 +1,6 @@
 
-
-/* main nav header customizations */
-.navbar-default .navbar-nav > li > a {
-  color:#eee;
-  font-weight:bold;
-}
-
-.navbar {
-  background-color: #ff3e67;
-  
-  a {
-    color:white;
-  }
-  
-  .navbar-brand {
-    font-weight:bold;
-    color:white;
-    font-size:2em;
-    text-shadow: 2px 2px 5px rgba(100, 100, 100, .8);
-  }
-}
-
-/* stripe logo on header */
-.stripe-power{
-  margin-top:1em;
-}
-
 /* ui.bootstrap fix for empty href */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
-
 
 /* Main body */
 html {
@@ -37,100 +8,58 @@ html {
   background-size: cover;
 }
 
-body{
+body {
   background-color: transparent;
-  color:#666;
-  min-width:768px;
+  color: #666;
+  min-width: 768px;
 }
 
-.well-no-color {
-  border:none;
-  background: rgba(255,255,255,.1);//opacity:.5;
-}
-
-
-
+/* misc */
 .todo {
   font-weight:bold;
-  color:rgba(112,10,255,.25);
+  color: rgba(112, 10, 255, .25);
 }
 
 /* ERROR MESSAGES */
 .has-error label {
-  color:red;
+  color: red;
 }
 .has-error input {
   border-width: 2px;
 }
 
 .form-errors {
-  border:solid red 1px;
+  border: solid red 1px;
   border-radius: 3px;
   background-color: rgba(200,50,50, .3);
   color: #cc0000;
-  margin-top:1.6em;
-  padding:1em;
-  font-size:1.4em;
+  margin-top: 1.6em;
+  padding: 1em;
+  font-size: 1.4em;
 }
+
 .form-error-msg {
-  font-size:.8em;
-  margin-top:.5em;
+  font-size: .8em;
+  margin-top: .5em;
 }
-
-
-
-
-/* Brochures */
-wct-brochure-display {
-  width:85%;
-  
-  .panel {
-    max-width:260px;
-  }
-}
-
-
-.home-panel{
-  max-width: 1000px;
-  .panel-body{
-    background-color: rgba(42,57,144,.9);
-    color:#f6f6f6;
-    opacity: 1;
-    border-radius:5px;
-  
-    h3 {
-      font-size:1.3em;
-      height:35px;
-      margin-bottom:1em;
-    }
-    p{
-      font-size:.9em;
-      height:115px;
-    }
-    a.btn {
-      margin:10px auto 0 auto;
-    }
-  }
-}
-
 
 /* shared panel styles - panel is loaded with child templates */
 .panel-container{
-  background: rgba(255,255,255,.8);
+  background: rgba(255, 255, 255, .8);
 }
 
 .panel-container {
   margin: 0 2em;
-  padding:1em;
+  padding: 1em;
 }
 
 .panel-signin {
-  font-weight:bold;
-  padding:2em;
+  font-weight: bold;
+  padding: 2em;
 }
 
 .btn-signin {
-  font-size:2em;
+  font-size: 2em;
 }
 
 
@@ -140,8 +69,8 @@ wct-brochure-display {
   position: fixed;
   top: 0px;
   left: 0px;
-  height:100%;
-  width:100%;
+  height: 100%;
+  width: 100%;
   background: #000;
   z-index: 1;
   opacity: 0.5;
@@ -154,43 +83,38 @@ wct-brochure-display {
   position: absolute;
   top: 50px;
   left: 0px;
-  height:90%;
-  width:100%;
+  height: 90%;
+  width: 100%;
   background: transparent;
   z-index: 2;
   padding: 30px 15px;
   font-size:.8em;
 }
 
-@media screen and (min-width: 992px)
-{
-  .Modal-box
-  {
+@media screen and (min-width: 992px) {
+  .Modal-box {
     width: 50%;
     padding: 30px;
   }
 }
 
 .panel-modal {
-  width:90%;
-  max-width:700px;
-  margin:0 auto;
-  padding:1em 2em 2em 2em;
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1em 2em 2em 2em;
   overflow: scroll;
   
   .panel-heading {
-    padding-bottom:3em;
+    padding-bottom: 3em;
   }
 }
-
-
 
 /* override bootstrap hover tables */
 .table-hover {
   > tbody > tr:hover {
     background-color: lighten($brand-primary, 10%);
-    color:white;
-    //font-weight:bold;
+    color: white;
     cursor: pointer;
   }
 }
@@ -198,130 +122,19 @@ wct-brochure-display {
 /* sub navigation in contexts */
 .nav.nav-sub-nav {
   li > a {
-    color:#444;
+    color: #444;
     text-shadow: 0 0 1px #222;
   }
   li.active > a {
-    color:white;
+    color: white;
   }
-  font-size:20px;
-  font-weight:bold;
+  font-size: 20px;
+  font-weight: bold;
   margin-bottom: 1em;
 }
 
-
-/* member styling */
-.show-item{
-  .item-description{
-    color:#999;
-  }
-  
-  .btn-icon {
-    width:2em;
-    margin-right:2px;
-  }
-}
-
-
-.show-date-repeater{
-  padding:5px 5px 4px 5px;
-  margin-bottom:6px;
-  
-  button {
-    background: #fff; /* fallback color for old browsers */
-    background: rgba(249, 249, 249, 0.75);
-  }
-}
-
-.inventory-container {
-  //border:solid red 1px;
-  display: flex;
-  flex-direction:row;
-  justify-content: space-between;
-  height:42px;
-  align-items:center;
-}
-
-span.inventory-name{
-  height:26px;
-  display:inline-block;
-}
-
-.form-command.row {
-  //border:solid red 1px;
-  //float:none;
-  margin:0;
-  //padding:0;
-}
-
-
-.btn-tkt {
-  //border:solid blue 1px;
-  position:relative;
-  .glyphicon{
-    position:absolute;
-    top:5px;
-    left:7px;
-  }
-}
-.btn-sku {
-  //border:solid blue 1px;
-  position:relative;
-  .glyphicon{
-    position:absolute;
-    top:5px;
-    left:0px;
-  }
-}
-
-.sku-desc {
-  color:#999;
-  font-size:.8em;
-}
-
-
-.tkt-btn-inv {
-  position:relative;
-  float:right;
-  top:-3px;
-  //border:solid red 1px;
-  display:inline-block;
-  font-size:.6em;
-  width:100%;
-  text-align:right;
-  background: rgba(182, 182, 182, 0.15);
-}
-
-
-.catalog-item.show-catalog {
-  h3 {
-    margin:0;
-    padding:0;
-    line-height:1em;
-  }
-}
-
-.catalog-show-container{
-  position:relative;
-}
-.soldout-showdate {
-  position:absolute;
-  padding-left:2em;
-  img {
-    width: 170px;
-    opacity: .7;
-  }
-}
-
-.catalog-ticket-container {
-  //width:50%;
-  float:left;
-  font-size:1em;
-  padding:.5em;
-  margin-right:1em;
-  margin-bottom:1em;
-  
-  .tkt-price {
-    
-  }
-}
+@import "components/nav";
+@import "components/home";
+@import "components/members";
+@import "components/cart";
+@import "components/catalog";

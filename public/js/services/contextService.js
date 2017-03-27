@@ -1,19 +1,29 @@
+////////////////////////////////////////////////////////////
+// Context Service
+//
+// Services for state context - generally used for setting
+// currently used items
+////////////////////////////////////////////////////////////
 
-angular.module('MyApp')
-  .service('ContextService', ['$http', '$q', '$stateParams', '$rootScope', '$window', 'jwtHelper',
-    'Config', 'Show', 'ShowDate', 'ShowTicket', 'Product', 'ProductSku',
-    function($http, $q, $stateParams, $rootScope, $window, jwtHelper,
+angular.module('wctApp')
+  .service('ContextService',
+    [ '$http', '$q', '$stateParams', '$rootScope', '$window', 'jwtHelper',
+      'Config',
+      'Show', 'ShowDate', 'ShowTicket',
+      'Product', 'ProductSku',
+    
+      function($http, $q, $stateParams, $rootScope, $window, jwtHelper,
              Config, Show, ShowDate, ShowTicket, Product, ProductSku){
 
       var _self = this;
             
+      // TODO rework this functionality
+      // establish publish key from env vars
       this.STRIPE_PUBLISH_KEY = function(){
-        return $http.get('/api/envkey/STRIPE_PUBLISH');
-      }
+         return $http.get('/api/envkey/STRIPE_PUBLISH');
+      };
   
-      ////////////////////////////////////////////////
       // PRODUCT Funcs
-      ////////////////////////////////////////////////
       this.currentProduct = null;
       this.setCurrentProduct = function(idx) {
         if(idx && idx !== '0'){
@@ -32,10 +42,8 @@ angular.module('MyApp')
           return this.currentProduct = null;
         }
       };
-  
-      ////////////////////////////////////////////////
+      
       // PRODUCTSKU Funcs
-      ////////////////////////////////////////////////
       this.currentProductSku = null;
       this.setCurrentProductSku = function(idx) {
         if(idx && idx !== '0'){
@@ -56,10 +64,8 @@ angular.module('MyApp')
           return this.currentProductSku = null;
         }
       };
-  
-      ////////////////////////////////////////////////
+        
       // CONFIG Funcs
-      ////////////////////////////////////////////////
       this.currentConfig = null;
       this.setCurrentConfig = function(idx) {
         if(idx && idx !== '0'){
@@ -75,9 +81,7 @@ angular.module('MyApp')
         }
       };
       
-      ////////////////////////////////////////////////
       // SHOW Funcs
-      ////////////////////////////////////////////////
       this.currentShow = null;
       this.setCurrentShow = function(idx) {
         if(idx && idx !== '0'){
@@ -97,9 +101,7 @@ angular.module('MyApp')
         }
       };
   
-      ////////////////////////////////////////////////
       // SHOWDATE Funcs
-      ////////////////////////////////////////////////
       this.currentShowDate = null;
       this.setCurrentShowDate = function(idx) {
         // console.log('IDX',idx)
@@ -122,9 +124,7 @@ angular.module('MyApp')
         }
       };
   
-      ////////////////////////////////////////////////
       // SHOWTICKET Funcs
-      ////////////////////////////////////////////////
       this.currentShowTicket = null;
       this.setCurrentShowTicket = function(idx) {
         if(idx && idx !== '0'){
@@ -150,9 +150,7 @@ angular.module('MyApp')
         }
       };
   
-      ////////////////////////////////////////////////
       // TODO SHOWIMAGE Funcs
-      ////////////////////////////////////////////////
       // this.currentShowImage = null;
       // this.setCurrentShowImage = function(idx) {
       //   // console.log('IDX',idx)
@@ -170,9 +168,7 @@ angular.module('MyApp')
       //   }
       // };
       
-      ////////////////////////////////////////////////
       // MEMBER Funcs
-      ////////////////////////////////////////////////
       this.__memberCurrent = function() {
         var _token = $window.localStorage.memberToken;
         if (_token && (!jwtHelper.isTokenExpired(_token))) {

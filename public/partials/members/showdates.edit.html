@@ -87,7 +87,7 @@
                      ng-max-length="2048">
             </div>
           </div>
-          <!-- TODO Bagging description for now-->
+          <!-- TODO implement description -->
           <div class="form-group">
             <label class="col-xs-3" for="f_active">Active</label>
             <div class="col-xs-9">
@@ -133,7 +133,11 @@
                   class="btn btn-sm btn-primary">Reset</button>
         </div>
         <div class=" col-xs-5">
-          <div style="height:30px;line-height:30px;" ng-show="view.getSuccessMessage().trim().length > 0" class="text-success"><strong>{{view.getSuccessMessage()}}</strong></div>
+          <div style="height:30px;line-height:30px;"
+               ng-show="view.getSuccessMessage().trim().length > 0"
+               class="text-success">
+            <strong>{{view.getSuccessMessage()}}</strong>
+          </div>
         </div>
         <div class="col col-xs-2 text-right">
           <button ng-disabled="true"

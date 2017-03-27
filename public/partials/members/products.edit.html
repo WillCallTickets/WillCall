@@ -6,16 +6,13 @@
         class="form-horizontal"
         novalidate
         ng-submit="submitForm(_form, 'product');">
+    <!--CURRENT {{view.ContextService.currentProduct}}-->
     <div class="panel panel-primary panel-modal panel-area">
-      <!--CURRENT {{view.ContextService.currentProduct}}-->
       <div class="panel-heading">
         <h4 class="panel-title col-xs-6">Product Editor</h4>
-        <!--<h4 class="panel-title col-xs-9">{{view.ContextService.currentShow.url}}</h4>-->
       </div>
       <div class="panel-body" style="padding-top:2em;">
         <div class="input-controls">
-          
-          
           <div class="form-group">
             <label class="col-xs-3" for="f_division">Division</label>
             <div class="col-xs-9">
@@ -27,7 +24,7 @@
               </select>
             </div>
           </div>
-          <!-- category is nothing as of yet -->
+          <!-- category is TBA - nothing as of yet -->
           <div class="form-group"
                ng-class="{  'has-error' : _form.f_name.$invalid && _form.f_name.$touched}">
             <label class="col-xs-3" for="f_name">Name</label>
@@ -95,6 +92,7 @@
         </div>
         
       </div><!-- end panel-body -->
+      
       <div class="panel-footer form-command row">
         <div class="col col-xs-5">
           <button ng-disabled="_form.$invalid"
@@ -108,7 +106,11 @@
                   class="btn btn-sm btn-primary">Reset</button>
         </div>
         <div class=" col-xs-5">
-          <div style="height:30px;line-height:30px;" ng-show="view.getSuccessMessage().trim().length > 0" class="text-success"><strong>{{view.getSuccessMessage()}}</strong></div>
+          <div style="height:30px;line-height:30px;"
+               ng-show="view.getSuccessMessage().trim().length > 0"
+               class="text-success">
+            <strong>{{view.getSuccessMessage()}}</strong>
+          </div>
         </div>
         <div class="col col-xs-2 text-right">
           <button ng-disabled="true"

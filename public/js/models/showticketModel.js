@@ -1,4 +1,4 @@
-angular.module('MyApp')
+angular.module('wctApp')
 .factory('ShowTicket', ['$http', '$q', function($http, $q){
   
   function ShowTicket(row, parentShowDate = null){
@@ -49,10 +49,7 @@ angular.module('MyApp')
     return this.priceWarning() || this.allotmentWarning() || this.availableWarning() || this.activeWarning();
   };
   
-  ////////////////////////////////////////////
   // STATIC methods
-  ////////////////////////////////////////////
-  
   ShowTicket.processForm = function(form, input, currentShowTicket, currentShowDate){
     
     var deferred = $q.defer();
@@ -88,7 +85,5 @@ angular.module('MyApp')
   };
   
   return ShowTicket;
+  
 }]);
-
-
-// http://stackoverflow.com/questions/26865967/how-do-i-create-a-custom-object-class-thats-available-to-my-methods-in-angular

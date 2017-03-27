@@ -1,4 +1,5 @@
 require('dotenv').config({silent:true});
+
 var shows = require('../../lib/dbops/shows');
 var showdates = require('../../lib/dbops/showdates');
 var showtickets = require('../../lib/dbops/showtickets');

@@ -1,6 +1,7 @@
 
-angular.module('MyApp')
-.controller('MembersController', ['$scope', '$location', '$window', '$stateParams',
+angular.module('wctApp')
+.controller('MembersController',
+  [ '$scope', '$location', '$window', '$stateParams',
     'ContextService', 'MembersService', '$http', '$state',
     function ($scope, $location, $window, $stateParams, ContextService, MembersService, $http, $state) {
 

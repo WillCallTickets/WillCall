@@ -1,4 +1,5 @@
 require('dotenv').config({silent:true});
+
 var products = require('../../lib/dbops/products');
 var productskus = require('../../lib/dbops/productskus');
 

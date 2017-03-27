@@ -1,4 +1,4 @@
-angular.module('MyApp').factory('Show',
+angular.module('wctApp').factory('Show',
   ['$http', '$q', 'moment', function($http, $q, moment){
   
   function Show(row, dateModels = null){
@@ -54,10 +54,7 @@ angular.module('MyApp').factory('Show',
     }
   };
   
-  ////////////////////////////////////////////
   // STATIC methods
-  ////////////////////////////////////////////
-  
   Show.processForm = function(form, input, currentShow){
   
     var deferred = $q.defer();
@@ -99,4 +96,5 @@ angular.module('MyApp').factory('Show',
   };
   
   return Show;
+  
 }]);

@@ -1,0 +1,100 @@
+.show-item {
+  .item-description {
+    color: #999;
+  }
+  
+  .btn-icon {
+    width: 2em;
+    margin-right: 2px;
+  }
+}
+
+.show-date-repeater {
+  padding: 5px 5px 4px 5px;
+  margin-bottom: 6px;
+  
+  button {
+    background: #fff; /* fallback color for old browsers */
+    background: rgba(249, 249, 249, 0.75);
+  }
+}
+
+.inventory-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 42px;
+  align-items: center;
+}
+
+span.inventory-name {
+  height: 26px;
+  display: inline-block;
+}
+
+.form-command.row {
+  margin: 0;
+}
+
+.btn-tkt {
+  position: relative;
+  .glyphicon {
+    position: absolute;
+    top: 5px;
+    left: 7px;
+  }
+}
+
+.btn-sku {
+  position: relative;
+  .glyphicon {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+  }
+}
+
+.sku-desc {
+  color: #999;
+  font-size: .8em;
+}
+
+.tkt-btn-inv {
+  position: relative;
+  float: right;
+  top: -3px;
+  display: inline-block;
+  font-size: .6em;
+  width: 100%;
+  text-align: right;
+  background: rgba(182, 182, 182, 0.15);
+}
+
+.catalog-item.show-catalog {
+  h3 {
+    margin: 0;
+    padding: 0;
+    line-height: 1em;
+  }
+}
+
+.catalog-show-container {
+  position: relative;
+}
+
+.soldout-showdate {
+  position: absolute;
+  padding-left: 2em;
+  img {
+    width: 170px;
+    opacity: .7;
+  }
+}
+
+.catalog-ticket-container {
+  float: left;
+  font-size: 1em;
+  padding: .5em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}

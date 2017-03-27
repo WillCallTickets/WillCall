@@ -1,7 +1,8 @@
-angular.module('MyApp')
+angular.module('wctApp')
 .controller('MembersFormsController',
   ['$scope', '$stateParams', '$http', 'ContextService', '$state',
-    'Config', 'Show', 'ShowDate', 'ShowTicket',
+    'Config',
+    'Show', 'ShowDate', 'ShowTicket',
     'Product', 'ProductSku',
   
     function ($scope, $stateParams, $http, ContextService, $state,

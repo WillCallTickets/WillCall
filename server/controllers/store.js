@@ -1,4 +1,5 @@
 require('dotenv').config({silent:true});
+
 var knex = require('../../config/db/knex');
 
 var products = require('../../lib/dbops/products');
@@ -75,7 +76,7 @@ exports.stripeVerifyCallback = function(req, res) {
 exports.saveStoreCart = function(req,res){
   invoices.saveCart(req.body)
   .then(function(data){
-    console.log('WE HAVE RETURNED TO API', data)
+    // console.log('WE HAVE RETURNED TO API', data)
     res.json(data);
   });
 };

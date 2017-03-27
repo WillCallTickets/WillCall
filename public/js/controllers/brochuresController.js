@@ -1,5 +1,5 @@
 
-angular.module('MyApp')
+angular.module('wctApp')
     .controller('BrochureController', BrochureController);
 
 BrochureController.$inject = ['$scope', '$location', 'BrochureService'];

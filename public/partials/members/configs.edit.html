@@ -6,8 +6,8 @@
           class="form-horizontal"
           novalidate
           ng-submit="submitForm(_form, 'config');">
+        <!--Current {{view.ContextService.currentConfig}}-->
         <div class="panel panel-primary panel-modal panel-area">
-            <!--Current {{view.ContextService.currentConfig}}-->
             <div class="panel-heading">
                 <h4 class="col-xs-12 panel-title">Config Editor</h4>
             </div>
@@ -80,7 +80,8 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- panel-body-->
+            </div><!-- end panel-body-->
+            
             <div class="panel-footer form-command">
                 <button ng-disabled="_form.$invalid"
                         type="submit"

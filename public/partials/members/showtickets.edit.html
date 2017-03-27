@@ -12,7 +12,6 @@
         <h4 class="panel-title col-xs-4">Show Ticket Editor</h4>
         
         <h4 class="panel-title col-xs-8 text-right" >
-          <!--alot |{{!_form.entity.allotted || _form.entity.allotted.toString().trim().length}}|-->
           <a ng-if="!_form.entity.allotted ||
                     _form.entity.allotted.toString().trim().length === 0 ||
                     _form.entity.allotted <= 0 ||
@@ -53,7 +52,7 @@
               </select>
             </div>
           </div>
-          <!-- TODO Bagging description for now-->
+          <!-- TODO implement description -->
           <div class="form-group"
                ng-class="{  'has-error' : _form.f_price.$invalid && _form.f_price.$touched}">
             <label class="col-xs-3" for="f_price">Price</label>
@@ -67,9 +66,9 @@
               <!--//TODO validate decimal input -->
             </div>
           </div>
-          <!-- TODO Bagging pricedetail for now-->
-          <!-- TODO Bagging pricedos for now-->
-          <!-- TODO Bagging pricedosdetail for now-->
+          <!-- TODO  pricedetail -->
+          <!-- TODO  pricedos -->
+          <!-- TODO  pricedosdetail -->
           <div class="form-group">
             <label class="col-xs-3" for="f_deliveryoptions">Delivery</label>
             <div class="col-xs-9">
@@ -119,7 +118,7 @@
               <span class="badge badge-primary inventory-name">Sold
                 <span class="badge badge-default">{{(view.ContextService.currentShowTicket) ? view.ContextService.currentShowTicket.sold : 0}}</span>
               </span>
-              <!--<span class="badge badge-primary inventory-name">Refunds-->
+              <!--TODO <span class="badge badge-primary inventory-name">Refunds-->
                 <!--<span class="badge badge-default">{{view.ContextService.currentShowTicket.refunded}}</span>-->
               <!--</span>-->
               <span class="badge badge-primary inventory-name">Avail
@@ -142,8 +141,8 @@
             {{error}}
           </div>
         </div>
-      
       </div><!-- end panel-body -->
+      
       <div class="panel-footer form-command row">
         <div class="col col-xs-5">
           <button ng-disabled="(!_form.entity.name && !_form.entity.price) || _form.$invalid"
@@ -157,7 +156,11 @@
                   class="btn btn-sm btn-primary">Reset</button>
         </div>
         <div class=" col-xs-5">
-          <div style="height:30px;line-height:30px;" ng-show="view.getSuccessMessage().trim().length > 0" class="text-success"><strong>{{view.getSuccessMessage()}}</strong></div>
+          <div style="height:30px;line-height:30px;"
+               ng-show="view.getSuccessMessage().trim().length > 0"
+               class="text-success">
+            <strong>{{view.getSuccessMessage()}}</strong>
+          </div>
         </div>
         <div class="col col-xs-2 text-right">
           <button ng-disabled="true"

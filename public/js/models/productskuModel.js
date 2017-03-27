@@ -1,4 +1,4 @@
-angular.module('MyApp')
+angular.module('wctApp')
 .factory('ProductSku', ['$http', '$q', function($http, $q){
   
   function ProductSku(row, parentProduct = null){
@@ -20,7 +20,7 @@ angular.module('MyApp')
   }
   
   ProductSku.prototype = {
-    parentProduct(row){
+    parentProduct(row) {
       this._parentProduct = row;
     }
   };
@@ -44,10 +44,7 @@ angular.module('MyApp')
     return this.priceWarning() || this.allotmentWarning() || this.availableWarning() || this.activeWarning();
   };
   
-  ////////////////////////////////////////////
   // STATIC methods
-  ////////////////////////////////////////////
-  
   ProductSku.processForm = function(form, input, currentProductSku, currentProduct){
     
     var deferred = $q.defer();

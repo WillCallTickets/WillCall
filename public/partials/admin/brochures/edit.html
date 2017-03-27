@@ -10,8 +10,6 @@
     <div ng-if="view.alerts && view.alerts.length > 0" role="alert" class="alert alert-success">
       <div ng-repeat="alert in view.alerts">{{alert}}</div>
     </div>
-    <!--<div>current: {{view.BrochureService.currentEdit()}}</div>-->
-    <!--<div>current: {{view.BrochureService.currentEdit().description}}</div>-->
     <form name="postForm"
           novalidate
           ng-submit="updateBrochure(postForm);">
@@ -46,13 +44,6 @@
                  placeholder="Description"
                  ng-value="view.BrochureService.currentEdit().description"
                  ng-model="postForm.brochure.description">
-
-          <!--<textarea class="form-control"-->
-                    <!--id="description"-->
-                    <!--name="description"-->
-                    <!--ng-attr-placeholder="Description"-->
-                    <!--ng-init="postForm.brochure.description=view.BrochureService.currentEdit().id"-->
-                    <!--ng-model="postForm.brochure.description"></textarea>-->
         </div>
       </div>
       <div>

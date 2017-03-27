@@ -5974,10 +5974,6 @@ textarea {
   letter-spacing: 0.2em;
   text-transform: uppercase; }
 
-.no-lr-pad {
-  padding-right: 0;
-  padding-left: 0; }
-
 /* generic button styling */
 .btn-add {
   font-weight: bold;
@@ -5995,6 +5991,7 @@ textarea {
 .glyphicon-primary {
   color: #2b3b94; }
 
+/* modal panel overwrites/customization */
 .panel-primary .panel-heading {
   border-left: solid #2a3990 1px;
   border-right: solid #2a3990 1px;
@@ -6108,6 +6105,7 @@ textarea {
   border-bottom: solid black 1px;
   background-color: #bfbfbf; }
 
+/* rainbow colored buttons - good for testing - find different scheme for release */
 .btn-clr0 {
   background-color: rgba(155, 111, 245, 0.3); }
 
@@ -6135,6 +6133,7 @@ textarea {
 .btn-clr8 {
   background-color: rgba(155, 111, 245, 0.3); }
 
+/* helper widths */
 .width-60 {
   width: 60px; }
 
@@ -6174,6 +6173,7 @@ textarea {
 .width-350 {
   width: 350px; }
 
+/* badge overwrite/customization */
 .badge-primary {
   background-color: #2a3990; }
 
@@ -6193,24 +6193,32 @@ textarea {
   background-color: #e6e6e6;
   color: #2a3990; }
 
-/* main nav header customizations */
-.navbar-default .navbar-nav > li > a {
-  color: #eee;
-  font-weight: bold; }
+/* helpers
+though most of these classes are not true mixins, this seemed the appropriate
+place for them to live
+ */
+.no-margin {
+  margin: 0; }
 
-.navbar {
-  background-color: #ff3e67; }
-  .navbar a {
-    color: white; }
-  .navbar .navbar-brand {
-    font-weight: bold;
-    color: white;
-    font-size: 2em;
-    text-shadow: 2px 2px 5px rgba(100, 100, 100, 0.8); }
+.no-padding {
+  padding: 0; }
 
-/* stripe logo on header */
-.stripe-power {
-  margin-top: 1em; }
+.no-lr-pad {
+  padding-right: 0;
+  padding-left: 0; }
+
+.no-wrap {
+  white-space: nowrap; }
+
+.half-width {
+  width: 50%; }
+
+.quarter-width {
+  width: 25%; }
+
+.well-no-color {
+  border: none;
+  background: rgba(255, 255, 255, 0.1); }
 
 /* ui.bootstrap fix for empty href */
 .nav, .pagination, .carousel, .panel-title a {
@@ -6226,10 +6234,7 @@ body {
   color: #666;
   min-width: 768px; }
 
-.well-no-color {
-  border: none;
-  background: rgba(255, 255, 255, 0.1); }
-
+/* misc */
 .todo {
   font-weight: bold;
   color: rgba(112, 10, 255, 0.25); }
@@ -6253,29 +6258,6 @@ body {
 .form-error-msg {
   font-size: .8em;
   margin-top: .5em; }
-
-/* Brochures */
-wct-brochure-display {
-  width: 85%; }
-  wct-brochure-display .panel {
-    max-width: 260px; }
-
-.home-panel {
-  max-width: 1000px; }
-  .home-panel .panel-body {
-    background-color: rgba(42, 57, 144, 0.9);
-    color: #f6f6f6;
-    opacity: 1;
-    border-radius: 5px; }
-    .home-panel .panel-body h3 {
-      font-size: 1.3em;
-      height: 35px;
-      margin-bottom: 1em; }
-    .home-panel .panel-body p {
-      font-size: .9em;
-      height: 115px; }
-    .home-panel .panel-body a.btn {
-      margin: 10px auto 0 auto; }
 
 /* shared panel styles - panel is loaded with child templates */
 .panel-container {
@@ -6345,7 +6327,49 @@ wct-brochure-display {
   .nav.nav-sub-nav li.active > a {
     color: white; }
 
-/* member styling */
+/* main nav header customizations */
+.navbar-default .navbar-nav > li > a {
+  color: #eee;
+  font-weight: bold; }
+
+.navbar {
+  background-color: #ff3e67; }
+  .navbar a {
+    color: white; }
+  .navbar .navbar-brand {
+    font-weight: bold;
+    color: white;
+    font-size: 2em;
+    text-shadow: 2px 2px 5px rgba(100, 100, 100, 0.8); }
+
+/* stripe logo on header */
+.stripe-power {
+  margin-top: 1em; }
+
+.home-panel {
+  max-width: 1000px; }
+  .home-panel .panel-body {
+    background-color: rgba(42, 57, 144, 0.9);
+    color: #f6f6f6;
+    opacity: 1;
+    border-radius: 5px; }
+    .home-panel .panel-body h3 {
+      font-size: 1.3em;
+      height: 35px;
+      margin-bottom: 1em; }
+    .home-panel .panel-body p {
+      font-size: .9em;
+      height: 115px; }
+    .home-panel .panel-body a.btn {
+      margin: 10px auto 0 auto; }
+
+wct-brochure-display {
+  width: 85%; }
+  wct-brochure-display h3 {
+    text-align: center; }
+  wct-brochure-display .panel {
+    max-width: 260px; }
+
 .show-item .item-description {
   color: #999; }
 
@@ -6424,3 +6448,45 @@ span.inventory-name {
   padding: .5em;
   margin-right: 1em;
   margin-bottom: 1em; }
+
+.store-cart {
+  float: left;
+  width: 100%;
+  padding: 1em; }
+
+.cart-checkout {
+  padding-left: .5em;
+  padding-right: .5em; }
+
+.cart-summary {
+  padding: 0 5px; }
+
+.cart-item {
+  padding: 5px; }
+
+.cart-item-qty {
+  padding: 0 0 0 5px; }
+
+.cart-item-description {
+  padding-right: 1em;
+  font-size: .8em; }
+
+.empty-cart-link {
+  margin-right: 1em; }
+  .empty-cart-link a {
+    font-size: .45em;
+    color: #444;
+    font-weight: bold;
+    opacity: .5;
+    cursor: pointer; }
+  .empty-cart-link a.disabled-empty {
+    cursor: auto;
+    opacity: .3; }
+
+.catalog-cell {
+  width: 60%; }
+  .catalog-cell .product-division button {
+    margin-bottom: 5px; }
+
+.sku-cell {
+  width: 40%; }

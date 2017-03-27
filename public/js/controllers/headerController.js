@@ -1,5 +1,5 @@
 
-angular.module('MyApp')
+angular.module('wctApp')
     .controller('HeaderCtrl', HeaderCtrl);
 
 HeaderCtrl.$inject = ['$scope', '$location', '$window', '$auth', 'ContextService'];

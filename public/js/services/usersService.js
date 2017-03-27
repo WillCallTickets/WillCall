@@ -1,6 +1,14 @@
+////////////////////////////////////////////////////////////
+// User Service
+//
+// TODO user related services - forgot password, profile, etc
+////////////////////////////////////////////////////////////
 
-angular.module('MyApp')
-  .service('UsersService', ['$http', '$q', '$stateParams', function($http, $q, $stateParams){
+angular.module('wctApp')
+  .service('UsersService',
+      ['$http', '$q', '$stateParams',
+      
+      function($http, $q, $stateParams){
 
     var _self = this;
     this.listing = null;

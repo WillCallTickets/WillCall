@@ -10,7 +10,6 @@
       <!--CURRENT {{view.ContextService.currentShow}}-->
       <div class="panel-heading">
         <h4 class="panel-title col-xs-6">Show Editor</h4>
-        <!--<h4 class="panel-title col-xs-9">{{view.ContextService.currentShow.url}}</h4>-->
       </div>
       <div class="panel-body" style="padding-top:2em;">
         <div class="input-controls">
@@ -77,6 +76,7 @@
               </div>
             </div>
           </div>
+          <!--TODO implement end date-->
           <!--<div class="form-group">-->
             <!--<label class="col-xs-3" for="f_enddate">End Display</label>-->
             <!--<div class="col-xs-9">-->
@@ -135,7 +135,11 @@
                   class="btn btn-sm btn-primary">Reset</button>
         </div>
         <div class=" col-xs-5">
-          <div style="height:30px;line-height:30px;" ng-show="view.getSuccessMessage().trim().length > 0" class="text-success"><strong>{{view.getSuccessMessage()}}</strong></div>
+          <div style="height:30px;line-height:30px;"
+               ng-show="view.getSuccessMessage().trim().length > 0"
+               class="text-success">
+            <strong>{{view.getSuccessMessage()}}</strong>
+          </div>
         </div>
         <div class="col col-xs-2 text-right">
           <button ng-disabled="true"

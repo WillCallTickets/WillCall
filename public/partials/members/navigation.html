@@ -1,11 +1,31 @@
 <div class="container">
   <ul class="nav navbar-nav nav-pills nav-sub-nav">
-    <li role="presentation" ng-class="{ active: isRouteActive('/members/shows')}"><a ui-sref="members.shows">Shows</a></li>
-    <li role="presentation" ng-class="{ active: isRouteActive('/members/products')}"><a ui-sref="members.products">Products</a></li>
-    <li role="presentation" ng-class="{ active: isRouteActive('/members/eventqs')}"><a ui-sref="members.eventqs">Events</a></li>
-    <li role="presentation" ng-class="{ active: isRouteActive('/members/configs')}"><a ui-sref="members.configs">Config</a></li>
-    <li role="presentation" ng-class="{ active: isRouteActive('/members/profile')}"><a ui-sref="members.profile">Profile</a></li>
-    <li role="presentation" ng-class="{ active: isRouteActive('/members/dashboard')}"><a disabled ui-sref="members.dashboard">Dashboard</a></li>
-    <li role="presentation"><a href="#" ng-click="memberLogout()">Logout</a></li>
+    <li role="presentation"
+        ng-class="{ active: isRouteActive('/members/shows')}">
+      <a ui-sref="members.shows">Shows</a>
+    </li>
+    <li role="presentation"
+        ng-class="{ active: isRouteActive('/members/products')}">
+      <a ui-sref="members.products">Products</a>
+    </li>
+    <li role="presentation"
+        ng-class="{ active: isRouteActive('/members/eventqs')}">
+      <a ui-sref="members.eventqs">Events</a>
+    </li>
+    <li role="presentation"
+        ng-class="{ active: isRouteActive('/members/configs')}">
+      <a ui-sref="members.configs">Config</a>
+    </li>
+    <li role="presentation"
+        ng-class="{ active: isRouteActive('/members/profile')}">
+      <a ui-sref="members.profile">Profile</a>
+    </li>
+    <li role="presentation"
+        ng-class="{ active: isRouteActive('/members/dashboard')}">
+      <a disabled ui-sref="members.dashboard">Dashboard</a>
+    </li>
+    <li role="presentation">
+      <a href="#" ng-click="memberLogout()">Logout</a>
+    </li>
   </ul>
 </div>

@@ -1,0 +1,25 @@
+/* main nav header customizations */
+.navbar-default .navbar-nav > li > a {
+  color: #eee;
+  font-weight: bold;
+}
+
+.navbar {
+  background-color: #ff3e67;
+  
+  a {
+    color: white;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    color: white;
+    font-size: 2em;
+    text-shadow: 2px 2px 5px rgba(100, 100, 100, .8);
+  }
+}
+
+/* stripe logo on header */
+.stripe-power{
+  margin-top: 1em;
+}

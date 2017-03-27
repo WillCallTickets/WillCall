@@ -1,19 +1,12 @@
 require('dotenv').config({silent:true});
 
-var async = require('async');
-var crypto = require('crypto');
-var nodemailer = require('nodemailer');
-var jwt = require('jsonwebtoken');
-var moment = require('moment');
-var request = require('request');
-var qs = require('querystring');
 var knex = require('../../config/db/knex');
-
-var members = require('../../lib/dbops/members');
-var events = require('../../lib/dbops/events');
-var shows = require('../../lib/dbops/shows');
 var configs = require('../../lib/dbops/configs');
 
+
+////////////////////////////////////////////////////////////
+// Configs
+////////////////////////////////////////////////////////////
 
 exports.getConfigById = function(req, res){
   configs.getConfigById(req.params.config_id)
@@ -32,11 +25,10 @@ exports.createOrUpdateConfig = function(req,res){
   });
 };
 
-// TODO authenticate
-exports.getEnvKey = function(req, res){
-  var key = process.env[req.params.keyname];
-  res.json(key);
-};
+
+////////////////////////////////////////////////////////////
+// Brochures - the marketing cells on the home page
+////////////////////////////////////////////////////////////
 
 exports.getBrochures = function(req, res){
   knex('brochures').select('*')
@@ -69,4 +61,11 @@ exports.addBrochure = function(req, res){
   .then(function(id){
     res.redirect('/api/brochures/' + id)
   });
+};
+
+// TODO authenticate
+exports.getEnvKey = function(req, res){
+  console.log('get key')
+  var key = process.env[req.params.keyname];
+  res.json(key);
 };

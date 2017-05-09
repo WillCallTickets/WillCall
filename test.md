@@ -9,7 +9,7 @@ We are using Postgresql
 Must be using express.static in your server/app file  
 We will be storing sensitive environment variables in a .env file  
 * Ensure your .env file is included within your .gitignore file  
-* **This may not be the most secure method of handling env vars - but that can be explored ata another time**  
+* **This may not be the most secure method of handling env vars - but that can be explored at another time**  
 
 ### Create an EC2 instance on AWS
 ```
@@ -23,10 +23,9 @@ Leave at default for free tier -> Add Tags
 It is suggested to add a name key to your instance - just makes it easier to find in the future - but not required
 Hit "Next: Configure Security Group"  
 
-
 Create a new security group
 We will need to allow the following inbound traffic rules to the instance. You can use default for the source 
-SSH - Generally, I prefer to use My IP - select "My IP" from the dropdown
+SSH - Generally, I prefer to use My IP as the source - select "My IP" from the dropdown
 HTTP
 HTTPS
 PostgreSQL
@@ -49,12 +48,14 @@ At this point, your new key/pair is in your downloads folder. You probably do no
 From the terminal
 ```
 cd ~/.ssh
+# move the file to a working directory - note the dot at the end of the command to move to the current dir
 mv ~/Downloads/myWalkthroughPair.pem .
+# assign proper permissions
+chmod 400 myWalkthroughPair.pem
 
 # get the public DNS info from your AWS instance
 # we will be logging in with the user ubuntu
 # example ssh -i "[your key name].pem" [user]@[instance public DNS]
-
 ssh -i "myWalkthroughPair.pem" ubuntu@ec2-xx-xx-xx-xx.compute-1.amazonaws.com
 
 # you will need to confirm the addition of the new host 
@@ -93,7 +94,7 @@ sudo apt-get install python2.7
 npm config set python /usr/bin/python2.7
 
 # verify python install and correct configuration
-TODO ????????????????
+TODO how to do this???
 ```
 
 ### Clone your repo to your instance - use the github clone HTTPS link!
@@ -351,7 +352,7 @@ module.exports = app;
 # be sure to specify the environment! or else you will get the error below!
 knex migrate:latest --env=production
 
-# if you receive the following error...you didn't specify the environment properly
+# if you receive the following error...you probably did not specify the environment properly
 Knex:warning - Pool2 - Error: Pool was destroyed
 Knex:Error Pool2 - error: password authentication failed for user "ubuntu"
 ....
@@ -371,3 +372,4 @@ npm run logs
 # one method to view
 more /home/ubuntu/.forever/[logfile name].log
 ```
+

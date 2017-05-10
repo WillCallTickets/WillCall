@@ -47,8 +47,9 @@ At this point, your new key/pair is in your downloads folder. You probably do no
 
 From the terminal
 ```
+# navigate to your working directory
 cd ~/.ssh
-# move the file to a working directory - note the dot at the end of the command to move to the current dir
+# move the file to your working directory - note the dot at the end of the command to move to the current dir
 mv ~/Downloads/myWalkthroughPair.pem .
 # assign proper permissions
 chmod 400 myWalkthroughPair.pem
@@ -67,6 +68,15 @@ yes
 # first order of business is to update and upgrade the instance - apply any security patches, etc
 sudo apt-get update && apt-get upgrade
 
+#######################
+# TODO Patrick?
+I am receiving the following error upon running the last command:
+Reading package lists... Done
+E: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)
+E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
+# Can I safely ignore?
+#######################
+
 # create a shell script that will define the node installation
 curl https://deb.nodesource.com/setup_7.x -o node.sh
 
@@ -80,6 +90,7 @@ sudo bash node.sh
 sudo apt-get install node.js
 # confirm
 y
+
 # also install debian package dev tools
 sudo apt-get install build-essential
 # confirm
@@ -87,19 +98,21 @@ y
 
 # PYTHON issues
 # python 3 has been automatically installed, but if you are using bcrypt 
-# (you are using bcrypt aren't you) you will need to install python 2.7
+# (you are using bcrypt aren't you?) you will need to install python 2.7
 sudo apt-get install python2.7
 
 # configure npm to use python 2.7
 npm config set python /usr/bin/python2.7
 
+###################
+# TODO Patrick
 # verify python install and correct configuration
 TODO how to do this???
 ```
 
-### Clone your repo to your instance - use the github clone HTTPS link!
-Grab the https link for your github repo  
-From your existing terminal sesssion...  
+### Clone your repo to your instance - github Clone with HTTPS link!
+Grab the https link from your github repo   
+And from your existing terminal sesssion...  
 
 ```
 # ensure you are working from your root dir and clone your project
@@ -116,7 +129,7 @@ npm i
 ```
 # TODO is this necessary? isn't this part of the previous npm install?
 # global installs
-sudo npm i -g knex pg
+# skipping for now sudo npm i -g knex pg
 
 # setup postgres db and create a "postgres" user
 cd ~
@@ -131,6 +144,7 @@ sudo -i -u postgres
 psql
 
 # create your database - don't forget to end your commands with a semi-colon
+# SAVE YOUR INFORMATION - WRITE IT DOWN SOMEWHERE
 CREATE DATABASE [db name];
 # connect to your newly created database
 \c [dbname]
@@ -198,7 +212,7 @@ module.exports = {
 Visit (Certbot.org)[https://certbot.eff.org/]  
 Enter "none of the above" for system  
 Enter your system name as the ubuntu version you used for your instance - Ubuntu 16.04   
-Use the listed install commands but DO NOT do the "GET STARTED" section yet - we will go there in a moment
+Use the listed install commands but DO NOT do the "GET STARTED" section yet - we will go there in a few steps
 ```
 ```
 # from the root dir
@@ -225,18 +239,26 @@ cd ~
 
 sudo npm i -g forever
 
-# add scripts to your package.json file
+# add the following scripts to your package.json file
 # next time you might set this up before deploying to github 
+/*
 "start": "node server.js",
 "forever": "forever start server.js",
 "again": "forever restart server.js",
 "stop": "forever stopall",
 "logs": "forever logs"
+*/
+cd [project dir]
+nano package.json
+
+# run your server
+npm run forever
 ```
 
 ### IP Tables
 Route incoming requests to the proper ports  
 ```
+cd ~
 sudo bash 
 iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8000
@@ -258,19 +280,35 @@ Select your instance - no need to specify private IP for this walkthrough
 
 Update your DNS entries at your Provider  
 Use the public IP address from your instance
+
+** keep in mind that it may take time for you to see your DNS changes propaget to the internet
+You can use nslookup to see if your DNS is using the new values
+
+nslookup [domainname]
+# following is the response we are looking for
+Server:		192.168.1.1
+Address:	192.168.1.1#53
+
+Non-authoritative answer:
+Name:	[my domain name]
+Address: xx.xx.xx.xx
+# does this address match your new ip?
 ```
 
 ### Connect via new IP and complete CertBot
-Your instance's ip will chang after being associated with a new Elastic IP  
-From your instance listing select your instance and get your new info by hitting the connect button  
-SSH into your instance with the new IP
+Your instance's ip will change after being associated with a new Elastic IP  
+From your instance listing (EC2 Dashboard) select your instance and click the connect button  
+SSH into your instance with the new connection information (should be using new IP)  
 ```
 ssh -i myWalkthroughPair.pem ubuntu@ec2-x-x-x-x.compute-1.amazonaws.com
 
 # confirm new host
 yes 
 
-# ensure you are in your project's dir
+# note that the IP at your prompt will reflect your instance's private IP address
+
+
+# navigate to your project dir
 cd [project]
 sudo certbot certonly
 
@@ -290,16 +328,34 @@ public
 
 # select corresponding number from the list
 2
+Waiting for verification...
 
-# All Set!!!
+
+# If you receive errors at this point, it may be due to your DNS not being corretly propagated yet
+# Be patient - take a coffee break
+
+# If you fail too many attempts - 5 per hour? you will need to wait an hour to try again
+# for more details, visit https://community.letsencrypt.org/t/rate-limiting-due-to-authz-errors/31632
+
+# letsencryot logfiles are located at /var/log/letsencrypt and you will need to access as root
+
+
+
+# All Set!!! 
 
 # Now configure keys - must access keys as root
-sudo bash
 cd ~
+sudo bash
 mkdir keys
 cd [project folder]
-cp /etc/letsencrypt/live/kurtzilla.xyz/fullchain.pem ../keys/
-cp /etc/letsencrypt/live/kurtzilla.xyz/privkey.pem ../keys/
+
+########################
+# TODO Patrick
+# I am pretty sure I just need to do this for my naked domain
+# can you verify that I do not need to do this for the www.[domain name]?
+########################
+cp /etc/letsencrypt/live/[your domain name]/fullchain.pem ../keys/
+cp /etc/letsencrypt/live/[your domain name]/privkey.pem ../keys/
 
 exit
 ```
